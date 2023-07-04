@@ -1,0 +1,249 @@
+﻿@model Viho.web.DataDB.TbTenant
+
+@{
+    ViewData["Title"] = "Edit Tenant";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@section Script{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+
+}
+
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+<script>
+    function updateRoomDropdown() {
+        var locationId = $("#locationDropdown").val();
+        var roomDropdown = $("#roomDropdown");
+        var roomHiddenInput = $("#roomHiddenInput"); // Added reference to the hidden input field
+
+        if (locationId) {
+            $.ajax({
+                url: "/TbTenants/GetRoomsByLocation",
+                type: "GET",
+                data: { locationId: locationId },
+                success: function (data) {
+                    roomDropdown.empty();
+                    roomDropdown.append($('<option></option>').val('').text('-- Select Room --'));
+                    $.each(data, function (i, room) {
+                        roomDropdown.append($('<option></option>').val(room.rId).text(room.rNo));
+                    });
+                    roomDropdown.prop("disabled", false); // Enable the room dropdown
+                    roomHiddenInput.prop("disabled", false); // Enable the hidden input field
+                },
+                error: function () {
+                    alert("Error occurred while retrieving rooms.");
+                    roomDropdown.prop("disabled", true); // Disable the room dropdown in case of an error
+                    roomHiddenInput.prop("disabled", true); // Disable the hidden input field in case of an error
+                }
+            });
+        } else {
+            roomDropdown.empty();
+            roomDropdown.append($('<option></option>').val('').text('-- Select Room --'));
+            roomDropdown.prop("disabled", true); // Disable the room dropdown if no location is selected
+            roomHiddenInput.prop("disabled", true); // Disable the hidden input field if no location is selected
+        }
+    }
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+<div class="page-body">
+    <div class="container-fluid">
+        <div class="page-header">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h3>Tenant</h3>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a asp-controller="Dashboard" asp-action="Index">Home</a></li>
+
+                        <li class="breadcrumb-item">Tenant</li>
+                        <li class="breadcrumb-item active">Edit Tenant</li>
+                    </ol>
+                </div>
+                <div class="col-sm-6">
+                    <!-- Bookmark Start-->
+                    <div class="bookmark">
+                        <ul>
+                            <li><a href="javascript:void(0)" data-container="body" data-bs-toggle="popover" data-placement="top" title="" data-original-title="Tables"><i data-feather="inbox"></i></a></li>
+                            <li><a href="javascript:void(0)" data-container="body" data-bs-toggle="popover" data-placement="top" title="" data-original-title="Chat"><i data-feather="message-square"></i></a></li>
+                            <li><a href="javascript:void(0)" data-container="body" data-bs-toggle="popover" data-placement="top" title="" data-original-title="Icons"><i data-feather="command"></i></a></li>
+                            <li><a href="javascript:void(0)" data-container="body" data-bs-toggle="popover" data-placement="top" title="" data-original-title="Learning"><i data-feather="layers"></i></a></li>
+                            <li>
+                                <a href="javascript:void(0)"><i class="bookmark-search" data-feather="star"></i></a>
+                                <form class="form-inline search-form">
+                                    <div class="form-group form-control-search">
+                                        <input type="text" placeholder="Search..">
+                                    </div>
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- Bookmark Ends-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Container-fluid starts-->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-header pb-0">
+                        <h5>Edit Tenant</h5><span>Edit tenant and their room.</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <form method="post" enctype="multipart/form-data" asp-action="Edit" asp-controller="TbTenants">
+                                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                    <input type="hidden" asp-for="TId" />
+                                    <div class="form-group">
+                                        <label>Tenant Name</label>
+                                        <input asp-for="TName" class="form-control" placeholder="Full Name" />
+                                        <span asp-validation-for="TName" class="text-danger"></span>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label>IC Number</label>
+                                        <input asp-for="TIc" class="form-control" placeholder="IC Number" />
+                                        <span asp-validation-for="TPhone" class="text-danger"></span>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label>Upload IC</label>
+                                        <div>
+                                            <input type="file" name="TUploadIc" class="form-control-file" />
+                                            <span asp-validation-for="TUploadIc" class="text-danger"></span>
+                                            
+                                        </div>
+                                        @if (!string.IsNullOrEmpty(Model.TUploadIc))
+                                        {
+                                            <div>
+                                                
+                                                <a href="@Model.TUploadIc" target="_blank">View Uploaded IC</a>
+                                            </div>
+                                        }
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Phone Number</label>
+                                        <input asp-for="TPhone" class="form-control" placeholder="Phone Number" />
+                                        <span asp-validation-for="TPhone" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Emergency Contact</label>
+                                        <input asp-for="TEmerContact" class="form-control" placeholder="Emergency Contact" />
+                                        <span asp-validation-for="TEmerContact" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Address</label>
+                                        <input asp-for="TAddress" class="form-control" placeholder="Email Address" />
+                                        <span asp-validation-for="TAddress" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Entry Date</label>
+                                        <input asp-for="TEntrydate" class="form-control" />
+                                        <span asp-validation-for="TEntrydate" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Exit Date</label>
+                                        <input asp-for="TExitdate" class="form-control" />
+                                        <span asp-validation-for="TExitdate" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Location</label>
+                                        <select asp-for="TRoom.RLocationid" id="locationDropdown" class="form-control" onchange="updateRoomDropdown()">
+                                            <option value="">-- Select Location --</option>
+                                            @foreach (var location in ViewBag.Locations)
+                                            {
+                                                <option value="@location.LId">@location.LCode</option>
+                                            }
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Room</label>
+                                        <select id="roomDropdown" asp-for="TRoomid" class="form-control" asp-items="ViewBag.TRoomid" disabled>
+                                            <option value="">-- Select Room --</option>
+                                        </select>
+                                        <input type="hidden" asp-for="TRoomid" id="roomHiddenInput" /> <!-- Added hidden input field to store the selected room value -->
+                                        <span asp-validation-for="TRoomid" class="text-danger"></span>
+                                    </div>
+                                   
+                                    
+
+
+
+                                    <div class="form-group">
+                                        <label>Card Code</label>
+                                        <input asp-for="TCardCode" class="form-control" />
+                                        <span asp-validation-for="TCardCode" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Add-On Detail</label>
+                                        <input asp-for="TAddOnDetail" class="form-control" />
+                                        <span asp-validation-for="TAddOnDetail" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Upload Agreement</label>
+                                        <div>
+                                            <input type="file" name="TAgreement" class="form-control-file" />
+                                            <span asp-validation-for="TAgreement" class="text-danger"></span>
+                                            
+                                        </div>
+                                        @if (!string.IsNullOrEmpty(Model.TAgreement))
+                                        {
+                                            <div>
+                                                
+                                                <a href="@Model.TAgreement" target="_blank">View Uploaded Agreement</a>
+                                            </div>
+                                        }
+
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Payment Status</label>
+                                        <select asp-for="TPaymentStatus" class="form-control">
+
+                                            <option value="Unpaid">Unpaid</option>
+                                            <option value="Paid">Paid</option>
+                                        </select>
+                                        <span asp-validation-for="TPaymentStatus" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="submit" value="Edit" class="btn btn-primary" />
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div>
+                            <a asp-action="Index">Back to List</a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Container-fluid Ends-->
+</div>

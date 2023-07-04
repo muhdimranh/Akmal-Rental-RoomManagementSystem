@@ -1,0 +1,59 @@
+﻿@model Viho.web.DataDB.TbAttendanceCleaner
+
+@{
+    ViewData["Title"] = "Attendance Record Add Location";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="page-body">
+    <div class="container-fluid">
+        <div class="page-header">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h3>Attendance Record</h3>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a asp-controller="Dashboard" asp-action="Index">Home</a></li>
+                        <li class="breadcrumb-item">Attendance</li>
+                        <li class="breadcrumb-item active">Add Location</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Container-fluid starts-->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-header pb-0">
+                        <h5>Add New Location</h5><span>Select New location to record cleaner attendance.</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <form asp-action="Create" method="post" asp-controller="TbAttendancesCleaner">
+                                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.AttLid, "Location Code", htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            @Html.DropDownListFor(model => model.AttLid, (IEnumerable<SelectListItem>)ViewBag.AttLid, "Select Location", new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.AttLid, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="submit" value="Create" class="btn btn-primary" />
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div>
+                            <a asp-action="Index">Back to List</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Container-fluid Ends-->
+</div>
+
+@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

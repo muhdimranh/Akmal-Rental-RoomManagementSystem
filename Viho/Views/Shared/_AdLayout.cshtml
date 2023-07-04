@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <partial name="_Style" />
+</head>
+<body>
+    <partial name="_Loader" />
+    <div class="page-wrapper compact-wrapper" id="pageWrapper">
+        <div class="page-body-wrapper sidebar-icon">
+            <partial name="_Header" />
+            <partial name="_SidePanelAdmin" />
+            @RenderBody()
+            <partial name="IconMarkup" />
+            <partial name="_Footer" />
+        </div>
+    </div>
+    <partial name="_Script" />
+    @RenderSection("Script", false)
+
+</body>
+</html>

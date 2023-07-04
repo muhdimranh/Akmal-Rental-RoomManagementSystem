@@ -1,0 +1,43 @@
+﻿@{
+    var userRoleIdClaim = User.Claims.FirstOrDefault(c => c.Type == "URoleid");
+    var userRoleId = userRoleIdClaim != null ? int.Parse(userRoleIdClaim.Value) : 0;
+}
+<!-- Container-fluid starts-->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <hr />
+                        <p>
+                            <b>Room Picture:</b>
+                            @if (!string.IsNullOrEmpty(Model.RImg1))
+                            {
+                                <img src="@Url.Content("~/Picture/Rooms/" + Model.RImg1)" alt="Room Image" class="img-fluid" style="max-width: 370px; max-height: 370px;" />
+                            }
+                            else
+                            {
+                                <span>No image available</span>
+                            }
+                        </p>
+                        <p><b>Room Number:</b> @Model.RNo</p>
+                        <p><b>Type:</b> @Model.RType</p>
+                        <p><b>Rent per Month: RM</b> @Model.RPrice</p>
+                        <p><b>Deposit Amount: RM</b> @Model.RDepositAmount</p>
+                        <p><b>Description:</b> @Model.RDesc</p>
+                        <p><b>Status:</b> @Model.RStatus</p>
+                        <p><b>Location:</b> @Model.RLocation.LAddress</p>
+                        @if (userRoleId == 3)
+                        {
+                        <hr />
+                        
+                            <p><a class="btn btn-secondary" asp-action="Edit" asp-route-id="@Model?.RId">Edit</a></p>
+                        }
+                        else{}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

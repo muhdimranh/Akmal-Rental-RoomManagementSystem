@@ -1,0 +1,31 @@
+﻿@using Microsoft.AspNetCore.Mvc;
+@using Microsoft.AspNetCore.Mvc.RazorPages;
+@using Microsoft.EntityFrameworkCore;
+@using System;
+@using System.Collections.Generic;
+@using System.Linq;
+@using Viho.web.DataDB;
+@{
+
+    Layout = "_Layout";
+    var userRoleIdClaim = User.Claims.FirstOrDefault(c => c.Type == "URoleid");
+    if (userRoleIdClaim != null)
+    {
+        int userRoleId = int.Parse(userRoleIdClaim.Value);
+        // Now you have the user role ID, you can use it for further logic
+        // For example, conditionally display or hide content based on the user role ID
+    }
+
+    var dbContext = new DbRentalContext();
+    // Get the tenants with current and past reminder dates
+   
+    var currentDate = DateTime.Now;
+    var tenants = dbContext.TbTenants
+        .Include(t => t.TRoom).ThenInclude(t=>t.RLocation)
+        .Where(t => t.LastReminderDate <= currentDate && !t.IsCheckedOut && t.TPaymentStatus == "Unpaid")
+        .ToList();
+
+
+    ViewBag.RentReminders = tenants;
+}
+

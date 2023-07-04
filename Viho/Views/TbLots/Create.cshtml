@@ -1,0 +1,74 @@
+﻿@model Viho.web.DataDB.TbLot
+
+@{
+    ViewData["Title"] = "Lot Add";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-body">
+    <div class="container-fluid">
+        <div class="page-header">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h3>Investor Lot</h3>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a asp-controller="Dashboard" asp-action="Index">Home</a></li>
+                        <li class="breadcrumb-item">Investor Lot</li>
+                        <li class="breadcrumb-item active">Add Investor Lot</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Container-fluid starts-->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-header pb-0">
+                        <h5>Add New Lot</h5><span>Fill in Lot Detail.</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <form asp-action="Create" method="post" asp-controller="TbLots">
+                                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                    <div class="form-group">
+                                        <h6>Lot Name</h6>
+                                        <input asp-for="LotName" class="form-control" placeholder="Insert lot name"/>
+                                        <span asp-validation-for="LotName" class="text-danger"></span>
+                                    </div>
+
+                                    <input type="hidden" asp-for="LotStatus" value="free" />
+
+                                    <div class="form-group">
+                                        <input type="submit" value="Create" class="btn btn-primary" onsubmit="return confirmAdd();" />
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div>
+                            <a asp-action="Index">Back to List</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Container-fluid Ends-->
+</div>
+
+
+@section Script{
+    <script>
+        function confirmAdd() {
+            if (confirm("Are you sure you want to add?")) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    </script>
+}
+@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+

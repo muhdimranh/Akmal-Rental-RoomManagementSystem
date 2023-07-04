@@ -1,0 +1,167 @@
+﻿@using System.Collections.Generic
+@using Microsoft.AspNet.Identity.Owin;
+@model List<Viho.web.DataDB.TbShare>
+
+@{
+    ViewData["Title"] = "Share";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var userID = User.Claims.FirstOrDefault(c => c.Type == "AccountId");
+    var AccountID = userID != null ? int.Parse(userID.Value) : 0;
+
+    var userRoleIdClaim = User.Claims.FirstOrDefault(c => c.Type == "URoleid");
+    var userRoleId = userRoleIdClaim != null ? int.Parse(userRoleIdClaim.Value) : 0;
+}
+
+
+<div class="page-body">
+    <div class="container-fluid">
+        <div class="page-header">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h3>Investor Share</h3>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a asp-controller="TbInvestors" asp-action="Index">Home</a></li>
+                        <li class="breadcrumb-item active">Share</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid dashboard-default-sec">
+        <div class="container-fluid general-widget">
+            <div class="row">
+                <div class="col-sm-3 col-xl-3 col-lg-3">
+                    <div class="card o-hidden border-0">
+                        <div class="bg-primary b-r-4 card-body">
+                            <div class="media static-top-widget">
+                                <div class="align-self-center text-center"><i data-feather="calendar"></i></div>
+                                <div class="media-body">
+                                    <span class="m-0">Today's Date</span>
+                                    <h4 class="mb-0 counter">@ViewBag.currDate</h4><i class="icon-bg" data-feather="calendar"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3 col-xl-3 col-lg-3">
+                    <div class="card o-hidden border-0">
+                        <div class="bg-secondary b-r-4 card-body">
+                            <div class="media static-top-widget">
+                                <div class="align-self-center text-center"><i data-feather="dollar-sign"></i></div>
+                                <div class="media-body">
+                                    <span class="m-0">Profit(RM)</span>
+                                    <h4 class="mb-0 counter"> @ViewBag.profit</h4><i class="icon-bg" data-feather="dollar-sign"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3 col-xl-3 col-lg-3">
+                    <div class="card o-hidden border-0">
+                        <div class="bg-primary b-r-4 card-body">
+                            <div class="media static-top-widget">
+                                <div class="align-self-center text-center"><i data-feather="percent"></i></div>
+                                <div class="media-body">
+                                    <span class="m-0">Lot Profit(RM)</span>
+                                    <h4 class="mb-0 counter">@Math.Round(ViewBag.share, 2)</h4><i class="icon-bg" data-feather="percent"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3 col-xl-3 col-lg-3">
+                    <div class="card o-hidden border-0">
+                        <div class="bg-success b-r-4 card-body">
+                            <div class="media static-top-widget">
+                                <div class="align-self-center text-center"><i data-feather="users"></i></div>
+                                <div class="media-body">
+                                    <span class="m-0">Total Investor</span>
+                                    <h4 class="mb-0 counter">@ViewBag.totalInvestor</h4><i class="icon-bg" data-feather="users"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Investor Share</h5><span>View the Investor and their shares</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="dt-ext table-responsive">
+                            <table class="display" id="responsive">
+                                <thead>
+                                    <tr>
+                                        <th>Investor Name</th>
+                                        <th>Share Amount</th>
+                                        <th>Share Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var share in Model)
+                                    {
+                                        @if (userRoleId == 4)
+                                        {
+                                            if (share.ShareInvestorNavigation?.IId == AccountID)
+                                            {
+                                                <tr>
+                                                    <td>@share.ShareInvestorNavigation.IIdNavigation.UUsername</td>
+                                                    <td>@Math.Round(share.ShareAmount, 2)</td>
+                                                    <td>@share.ShareDate.ToString("yyyy-MM-dd")</td>
+                                                </tr>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <tr>
+                                                <td>@share.ShareInvestorNavigation.IIdNavigation.UUsername</td>
+                                                <td>@Math.Round(share.ShareAmount, 2)</td>
+                                                <td>@share.ShareDate.ToString("yyyy-MM-dd")</td>
+                                            </tr>
+                                        }
+
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Script{
+    <!-- Plugins JS start-->
+    <script src="../assets/js/modal-animated.js"></script>
+    <script src="../assets/js/datatable/datatables/jquery.dataTables.min.js"></script>
+    <script src="../assets/js/datatable/datatables/datatable.custom.js"></script>
+    <script src="../assets/js/tooltip-init.js"></script>
+    <script src="../assets/js/modal-animated.js"></script>
+    <script src="../assets/js/datatable/datatables/jquery.dataTables.min.js"></script>
+    <script src="../assets/js/datatable/datatable-extension/dataTables.buttons.min.js"></script>
+    <script src="../assets/js/datatable/datatable-extension/jszip.min.js"></script>
+    <script src="../assets/js/datatable/datatable-extension/buttons.colVis.min.js"></script>
+    <script src="../assets/js/datatable/datatable-extension/pdfmake.min.js"></script>
+    <script src="../assets/js/datatable/datatable-extension/vfs_fonts.js"></script>
+    <script src="../assets/js/datatable/datatable-extension/dataTables.autoFill.min.js"></script>
+    <script src="../assets/js/datatable/datatable-extension/dataTables.select.min.js"></script>
+    <script src="../assets/js/datatable/datatable-extension/buttons.bootstrap4.min.js"></script>
+    <script src="../assets/js/datatable/datatable-extension/buttons.html5.min.js"></script>
+    <script src="../assets/js/datatable/datatable-extension/buttons.print.min.js"></script>
+    <script src="../assets/js/datatable/datatable-extension/dataTables.bootstrap4.min.js"></script>
+    <script src="../assets/js/datatable/datatable-extension/dataTables.responsive.min.js"></script>
+    <script src="../assets/js/datatable/datatable-extension/responsive.bootstrap4.min.js"></script>
+    <script src="../assets/js/datatable/datatable-extension/dataTables.keyTable.min.js"></script>
+    <script src="../assets/js/datatable/datatable-extension/dataTables.colReorder.min.js"></script>
+    <script src="../assets/js/datatable/datatable-extension/dataTables.fixedHeader.min.js"></script>
+    <script src="../assets/js/datatable/datatable-extension/dataTables.rowReorder.min.js"></script>
+    <script src="../assets/js/datatable/datatable-extension/dataTables.scroller.min.js"></script>
+    <script src="../assets/js/datatable/datatable-extension/custom.js"></script>
+}

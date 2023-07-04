@@ -1,0 +1,452 @@
+﻿@model IEnumerable<Viho.web.DataDB.TbRoom>
+@{
+    ViewData["Title"] = "Managing Rooms";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var userRoleIdClaim = User.Claims.FirstOrDefault(c => c.Type == "URoleid");
+    var userRoleId = userRoleIdClaim != null ? int.Parse(userRoleIdClaim.Value) : 0;
+}
+<div class="page-body">
+    <div class="container-fluid">
+        <div class="page-header">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h3>Manage Room</h3>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a asp-controller="Dashboard" asp-action="Index">Home</a></li>
+                        <li class="breadcrumb-item active">Rooms</li>
+                    </ol>
+                </div>
+                @if (userRoleId == 3)
+                {
+                    <div class="col-sm-6">
+                        <!-- Create room Start-->
+
+                        <div class="bookmark">
+                            <ul>
+                                <a asp-action="Create" class="btn btn-pill btn-primary btn-air-primary btn-primary-gradien"><i class="fa fa-plus-square"></i> Add New Room</a>
+                            </ul>
+                        </div>
+                        <!-- Create room Ends-->
+                    </div>
+                }else{}
+            </div>
+        </div>
+    </div>
+    <!-- Container-fluid starts-->
+    <div class="container-fluid product-wrapper">
+        <div class="product-wrapper-grid">
+            <div class="card col-sm-12">
+                <div class="card-body">
+                    <div class="col-xl-12 col-md-6">
+                        <div class="blog-box blog-list row justify-content-center">
+                            <div class="col-md-6 col-sm-6 d-flex justify-content-center align-items-center">
+                                <span class="f-w-600 m-r-5">Select Location (Floor): </span>
+                                <div class="select2-drpdwn-product select-options d-inline-block">
+                                    <select class="form-control btn-square" id="locationSelect" name="select">
+                                        <option id="clearFilter" value="">All</option>
+                                        @foreach (var location in ViewBag.Locations)
+                                        {
+                                            
+                                            <option value="@location.LId" data-img="@Url.Content("~/Picture/Layouts/" + location.LImglayout1)" data-href="@Url.Content("~/Picture/Layouts/" + location.LImglayout1)" data-code="@location.LCode" data-address="@location.LAddress">@location.LCode - @location.LAddress</option>
+                                            
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6 d-flex justify-content-center align-items-center">
+                                <span class="f-w-600 m-r-5">Availability:</span>
+                                <div class="select2-drpdwn-product select-options d-inline-block">
+                                    <select class="form-control btn-square" id="availabilitySelect" name="select">
+                                        <option value="">All</option>
+                                        <option value="available">Available</option>
+                                        <option value="not-available">Not Available</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="blog-box blog-list row">
+                            <div class="col-xl-3 col-3">
+                                <div class="blog-wraper sm-100-wp p-0 d-flex justify-content-center align-items-center">
+                                    <div class="row my-gallery gallery" id="aniimated-thumbnials" itemscope="">
+                                        <figure class="img-hover hover-1" itemprop="associatedMedia" itemscope="">
+                                            <a id="locationImage1" href="Picture/Logo/0001.jpg" itemprop="contentUrl" data-size="1600x950">
+                                                <div class="hover-overlay">
+                                                    <img class="img-fluid sm-100-wp p-0" id="locationImage" src="Picture/Logo/0001.jpg" style="max-width: 250px; max-height: 300px;" alt="Image description">
+                                                </div>
+                                            </a>
+                                        </figure>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="blog-box blog-list row col-xl-9 col-9">
+                                <div class="blog-details">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="card-text">
+                                                <b>Floor Code: </b>
+                                                <span id="floorCode"></span>
+                                                <hr />
+                                                <b>Address: </b>
+                                                <span id="addressText"></span>
+                                                <hr />
+                                                <b>Total Room: </b>
+                                                <span id="roomCount"></span>
+                                                <hr />
+                                                <b>Availability: </b>
+                                                <span id="availableCount"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+             </div>
+         </div>
+     </div>
+    <div>
+        <div>
+            <div class="row">
+                @foreach (var item in Model)
+                {
+                    
+                    <div class="col-xl-3 col-sm-4 room-card" data-location="@item.RLocation.LId">
+                        <div class="card d-flex flex-column">
+                            <div class="flex-grow-1">
+                                <div class="ribbon ribbon-primary ribbon-space-bottom">
+                                    Room No: @Html.DisplayFor(modelItem => item.RNo)
+                                </div>
+                                <div class="vertical-scroll scroll-demo">
+                                    <p>
+                                        <div class="d-flex justify-content-center align-items-center">
+                                            <div class="image-wrapper">
+                                                @if (!string.IsNullOrEmpty(item.RImg1))
+                                                {
+                                                    <div class="row my-gallery gallery" id="aniimated-thumbnials" itemscope="">
+                                                        <figure class="img-hover hover-1" itemprop="associatedMedia" itemscope="">
+                                                            <a href="@Url.Content("Picture/Rooms/" + item.RImg1)" itemprop="contentUrl" data-size="1600x950">
+                                                                <div class="hover-overlay">
+                                                                    <img class="img-fluid" id="locationImage" src="@Url.Content("Picture/Rooms/" + item.RImg1)" alt="Image description">
+                                                                    <figcaption itemprop="caption description">Room Image</figcaption>
+                                                                </div>
+                                                            </a>
+                                                        </figure>
+                                                    </div>
+                                                }
+                                                else
+                                                {
+                                                    <span>No image available</span>
+                                                }
+                                            </div>
+                                        </div>
+                                    </p>
+                                    <p class="card-text">
+                                        <h6>Type:</h6>
+                                        @Html.DisplayFor(modelItem => item.RType)
+                                    </p>
+                                    <p class="card-text">
+                                        <h6>Room Information: </h6>
+                                        @Html.DisplayFor(modelItem => item.RDesc)
+                                    </p>
+                                    <p class="card-text">
+                                        <h6>Status:</h6>
+                                        @if (item.RStatus == "Available")
+                                        {
+                                            <span class="badge rounded-pill badge-success">Available</span>
+                                        }
+                                        else if (item.RStatus == "Not Available")
+                                        {
+                                            <span class="badge rounded-pill badge-danger">Not Available</span>
+                                        }
+                                    </p>
+                                    <p class="card-text">
+                                        <h6>Location: </h6>
+                                        @Html.DisplayFor(modelItem => item.RLocation.LAddress)
+                                    </p>
+                                    <hr />
+                                    <p class="card-text">
+                                        <div class="btn-group-wrapper justify-content-center align-items-center">
+                                            <div class="mt-auto">
+                                                <div class="btn-group d-flex justify-content-center" role="group">
+                                                    @if (userRoleId == 3)
+                                                    {
+                                                        <div class="dropdown-basic">
+                                                            <div class="dropdown">
+                                                                <div class="btn-group mb-0">
+                                                                    <button class="dropbtn btn-primary btn-round" type="button">Action<i class="icofont icofont-arrow-down"></i></button>
+                                                                    <div class="dropdown-content">
+                                                                        <a asp-action="Edit" asp-route-id="@item.RId" type="button">Edit</a>
+                                                                        <a onclick="loadDetails(@item.RId)">View</a>
+                                                                        <a asp-action="Delete" asp-route-id="@item.RId" type="button">Delete</a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    }
+                                                    else
+                                                    {
+                                                        <a class="btn btn-pill btn-primary" onclick="loadDetails(@item.RId)">View</a>
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+            <!-------------No Info Message Start---------->
+            <div id="noRoomsMessage" style="display: none;">
+                <div class="card">
+                    <div class="card-text text-center">
+                        No room information. Please add new room.
+                    </div>
+                </div>
+             </div>
+            <!-------------No Info Message End---------->
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Room Detail</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="modalContent">
+                    <div class="card">
+                        <div class="animate-widget">
+                            <!-- Content will be loaded dynamically here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Root element of PhotoSwipe. Must have class pswp.-->
+    <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+        <!--
+        Background of PhotoSwipe.
+        It's a separate element, as animating opacity is faster than rgba().
+        -->
+        <div class="pswp__bg"></div>
+        <!-- Slides wrapper with overflow:hidden.-->
+        <div class="pswp__scroll-wrap">
+            <!-- Container that holds slides. PhotoSwipe keeps only 3 slides in DOM to save memory.-->
+            <!-- don't modify these 3 pswp__item elements, data is added later on.-->
+            <div class="pswp__container">
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+            </div>
+            <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed.-->
+            <div class="pswp__ui pswp__ui--hidden">
+                <div class="pswp__top-bar">
+                    <!-- Controls are self-explanatory. Order can be changed.-->
+                    <div class="pswp__counter"></div>
+                    <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                    <button class="pswp__button pswp__button--share" title="Share"></button>
+                    <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                    <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                    <!-- Preloader demo https://codepen.io/dimsemenov/pen/yyBWoR-->
+                    <!-- element will get class pswp__preloader--active when preloader is running-->
+                    <div class="pswp__preloader">
+                        <div class="pswp__preloader__icn">
+                            <div class="pswp__preloader__cut">
+                                <div class="pswp__preloader__donut"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                    <div class="pswp__share-tooltip"></div>
+                </div>
+                <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+                <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+                <div class="pswp__caption">
+                    <div class="pswp__caption__center"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <!-- Container-fluid Ends-->
+
+@section Script {
+    <!-- Filter Data Start-->
+    <script>
+        $(document).ready(function () {
+            var defaultImgSrc = 'Picture/Logo/0001.jpg';
+            var defaultHrefSrc = 'Picture/Logo/0001.jpg';
+            var defaultFloorCode = 'All';
+            var defaultAddress = 'All';
+
+            $('#locationSelect, #availabilitySelect').change(function () {
+                var selectedLocation = $('#locationSelect').val();
+                var selectedAvailability = $('#availabilitySelect').val();
+                filterRooms(selectedLocation, selectedAvailability);
+                updateLocationImage(selectedLocation);
+                updateFloorCode(selectedLocation);
+                updateAddressText(selectedLocation);
+                updateRoomCounts(selectedLocation, selectedAvailability);
+            });
+
+            $('#clearFilter').click(function () {
+                $('#locationSelect').val('');
+                $('#availabilitySelect').val('');
+                filterRooms('', '');
+                updateLocationImage('');
+                updateFloorCode('');
+                $('#locationImage').attr('src', defaultImgSrc);
+                $('#locationImage1').attr('href', defaultHrefSrc);
+                $('#floorCode').text(defaultFloorCode);
+                $('#addressText').text(defaultAddress);
+                updateRoomCounts('', '');
+            });
+
+            function filterRooms(locationId, availability) {
+                $('.room-card').hide();
+                if (locationId === '' && availability === '') {
+                    $('.room-card').show();
+                    $('#noRoomsMessage').hide();
+                } else {
+                    var $matchingRooms = $('.room-card');
+                    if (locationId !== '') {
+                        $matchingRooms = $matchingRooms.filter('[data-location="' + locationId + '"]');
+                    }
+                    if (availability !== '') {
+                        $matchingRooms = $matchingRooms.filter(function () {
+                            var status = $(this).find('.badge').hasClass('badge-success') ? 'available' : 'not-available';
+                            return status === availability;
+                        });
+                    }
+                    if ($matchingRooms.length > 0) {
+                        $matchingRooms.show();
+                        $('#noRoomsMessage').hide();
+                    } else {
+                        $('#noRoomsMessage').show();
+                    }
+                }
+            }
+
+
+            function updateLocationImage(locationId) {
+                var selectedOption = $('#locationSelect option:selected');
+                var imgSrc = selectedOption.data('img');
+                var imgHref = selectedOption.data('href'); // Get the dynamic href value
+
+                if (imgSrc) {
+                    $('#locationImage').attr('src', imgSrc);
+                } else {
+                    $('#locationImage').attr('src', defaultImgSrc);
+                }
+
+                if (imgHref) {
+                    $('#locationImage1').attr('href', imgHref); // Set the dynamic href value
+                } else {
+                    $('#locationImage1').attr('href', defaultHrefSrc); // Set a default href value if needed
+                }
+            }
+
+            function updateFloorCode(locationId) {
+                var selectedOption = $('#locationSelect option:selected');
+                var floorCode = selectedOption.data('code');
+                if (floorCode) {
+                    $('#floorCode').text(floorCode);
+                } else {
+                    $('#floorCode').text(defaultFloorCode);
+                }
+            }
+
+            function updateAddressText(locationId) {
+                var selectedOption = $('#locationSelect option:selected');
+                var address = selectedOption.data('address');
+                if (address) {
+                    $('#addressText').text(address);
+                } else {
+                    $('#addressText').text(defaultAddress);
+                }
+            }
+
+            function updateRoomCounts(locationId, availability) {
+                if (locationId === '' && availability === '') {
+                    var allRooms = $('.room-card');
+                    var roomCount = allRooms.length;
+                    var availableCount = allRooms.find('.badge-success').length;
+                    var notAvailableCount = allRooms.find('.badge-danger').length;
+
+                    $('#roomCount').text(roomCount);
+                    $('#availableCount').text('Available: ' + availableCount + ' | Not Available: ' + notAvailableCount);
+                } else {
+                    var $matchingRooms = $('.room-card');
+                    if (locationId !== '') {
+                        $matchingRooms = $matchingRooms.filter('[data-location="' + locationId + '"]');
+                    }
+                    if (availability !== '') {
+                        $matchingRooms = $matchingRooms.filter(function () {
+                            var status = $(this).find('.badge').hasClass('badge-success') ? 'available' : 'not-available';
+                            return status === availability;
+                        });
+                    }
+
+                    var roomCount = $matchingRooms.length;
+                    var availableCount = $matchingRooms.find('.badge-success').length;
+                    var notAvailableCount = $matchingRooms.find('.badge-danger').length;
+
+                    $('#roomCount').text(roomCount);
+                    $('#availableCount').text('Available: ' + availableCount + ' | Not Available: ' + notAvailableCount);
+                }
+            }
+        });
+
+        function loadDetails(id) {
+            $.ajax({
+                url: '@Url.Action("Details", "TbRooms")',
+                type: 'GET',
+                data: { id: id },
+                success: function (result) {
+                    $('#modalContent').html(result);
+                    $('#myModal').modal('show');
+                },
+                error: function () {
+                    alert('Error occurred while loading details.');
+                }
+            });
+        }
+    </script>
+
+    <!-- Filter Data End-->
+    
+    <!-------------Image Hover Effect--------------->
+    <script src="../assets/js/photoswipe/photoswipe.min.js"></script>
+    <script src="../assets/js/photoswipe/photoswipe-ui-default.min.js"></script>
+    <script src="../assets/js/photoswipe/photoswipe.js"></script>
+    <!------------Image Hover Effect End------------>
+    <!-------------------Scroll----------------------->
+    <script src="../assets/js/scrollable/perfect-scrollbar.min.js"></script>
+    <script src="../assets/js/scrollable/scrollable-custom.js"></script>
+    <script src="../assets/js/tooltip-init.js"></script>
+    <!---------------------Scroll--------------------->
+    <!-- Plugins JS start-->
+    <script src="../assets/js/height-equal.js"></script>
+    <script src="../assets/js/modal-animated.js"></script>
+    <script src="../assets/js/range-slider/ion.rangeSlider.min.js"></script>
+    <script src="../assets/js/range-slider/rangeslider-script.js"></script>
+    <script src="../assets/js/touchspin/vendors.min.js"></script>
+    <script src="../assets/js/touchspin/touchspin.js"></script>
+    <script src="../assets/js/touchspin/input-groups.min.js"></script>
+    <script src="../assets/js/owlcarousel/owl.carousel.js"></script>
+    <script src="../assets/js/select2/select2.full.min.js"></script>
+    <script src="../assets/js/select2/select2-custom.js"></script>
+    <script src="../assets/js/tooltip-init.js"></script>
+    <script src="../assets/js/product-tab.js"></script>
+    <script src="../assets/js/config.js"></script>
+    <!-- Plugins JS Ends-->
+}

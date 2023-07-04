@@ -1,0 +1,219 @@
+﻿@model IEnumerable<Viho.web.DataDB.TbUser>
+
+
+@{
+    ViewData["Title"] = "User & Roles";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var userRoleIdClaim = User.Claims.FirstOrDefault(c => c.Type == "URoleid");
+    var userRoleId = userRoleIdClaim != null ? int.Parse(userRoleIdClaim.Value) : 0;
+}
+
+@section Script {
+    <!-- Plugins JS start-->
+    <script src="../assets/js/datatable/datatables/jquery.dataTables.min.js"></script>
+    <script src="../assets/js/datatable/datatables/datatable.custom.js"></script>
+    <script src="../assets/js/tooltip-init.js"></script>
+    <!-- Plugins JS Ends-->
+    <!-- Plugins JS start-->
+    <script src="../assets/js/modal-animated.js"></script>
+    <!-- Plugins JS Ends-->
+
+    <script src="../assets/js/sweet-alert/sweetalert.min.js"></script>
+    <script src="../assets/js/sweet-alert/app.js"></script>
+    
+
+    <script>
+        function loadDetails(id) {
+            $.ajax({
+                url: '@Url.Action("Details", "TbUsers")',
+                type: 'GET',
+                data: { id: id },
+                success: function (result) {
+                    $('#modalContent').html(result);
+                    $('#myModal').modal('show');
+                },
+                error: function () {
+                    alert('Error occurred while loading details.');
+                }
+            });
+        }
+
+        function showDeleteConfirmation(id) {
+            // Set the action URL for the delete form in the modal
+            var deleteUrl = "/TbUsers/Delete/" + id;
+            $("#deleteForm").attr("action", deleteUrl);
+
+            // Open the modal
+            $("#exampleModal").modal("show");
+        }
+    </script>
+
+
+}
+
+<style>
+    .column-action {
+        width: 280px; /* Set the desired width */
+    }
+</style>
+<div class="page-body">
+    <div class="container-fluid">
+        <div class="page-header">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h3>User & Roles</h3>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a asp-controller="Dashboard" asp-action="Index">Home</a></li>
+                        <li class="breadcrumb-item active">User & Roles</li>
+                    </ol>
+                </div>
+                @if (userRoleId == 3)
+                {
+                    <div class="col-sm-6">
+                        <!-- Create room Start-->
+                        <div class="bookmark">
+                            <ul>
+                                <p class="text-end">
+                                    <a asp-action="Create" class="btn btn-pill btn-primary btn-air-primary btn-primary-gradien">
+                                        <i data-feather="user-plus"></i>
+                                    </a>
+                                </p>
+                            </ul>
+                        </div>
+                        <!-- Create room Ends-->
+                    </div>
+                }
+                else { }
+            </div>
+        </div>
+    </div>
+<!-- User Table  Starts-->
+<div class="col-sm-12">
+    <div class="card">
+        <div class="card-header">
+                <h5>Record of Users</h5><span>View, edit and delete users. Add Admin or Investor.</span>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="display" id="basic-1">
+                    <thead>
+                        <tr>
+                            <th>
+                                Username
+                            </th>
+                            
+                            <th>
+                                Phone Number
+                            </th>
+                            <th>
+                                Email Address
+                            </th>
+                            <th>
+                                User Role
+                            </th>
+                                @if (userRoleId == 3)
+                                {
+                                    <th class="column-action">
+                                        Action
+                                    </th>
+                                }
+                                else
+                                {
+                                    
+                                }
+                            </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.UUsername)
+                                </td>
+                                
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.UPhone)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.UEmail)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.URole.RlDesc)
+                                </td>
+                                    @if (userRoleId == 3)
+                                    {
+                                        <td>
+
+                                            <a asp-action="Edit" asp-route-id="@item.UId" class="btn btn-pill btn-secondary btn-air-secondary btn-secondary-gradient">
+                                                Edit
+                                            </a>
+
+
+
+                                            <a onclick="loadDetails(@item.UId)" class="btn btn-pill btn-danger btn-air-warning btn-warning-gradien">
+                                                View
+                                            </a>
+                                            <a onclick="showDeleteConfirmation(@item.UId)" class="btn btn-pill btn-danger btn-air-danger btn-danger-gradien">
+                                                Delete
+                                            </a>
+
+
+                                        </td>
+                                    }
+    
+                               else{}
+                            </tr>
+                        }
+                            
+                    </tbody>
+                </table>
+            </div>
+
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="#exampleModal" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Delete Confirmation</h5>
+                                <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <p style="color: red;">Are you sure you want to delete this item? Changes made cannot be reverted!</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Cancel</button>
+                                <form id="deleteForm" action="" method="post">
+                                    <input type="submit" class="btn btn-danger" value="Delete" />
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+        </div>
+    </div>
+</div>
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">User Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="modalContent">
+                    <div class="card">
+                        <div class="animate-widget">
+                    <!-- Content will be loaded dynamically here -->
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Container-fluid Ends-->
+</div>
+

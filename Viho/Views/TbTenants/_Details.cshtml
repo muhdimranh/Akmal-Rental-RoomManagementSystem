@@ -1,0 +1,52 @@
+﻿<!-- Container-fluid starts-->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-16">
+            <div class="card">
+                
+                <div class="card-body">
+                    <div class="row">
+                        
+                            
+                            
+                        <p><b>Name:</b> @Model.TName</p>
+                        <p><b>IC Number:</b> @Model.TIc</p>
+                        <div><img src="@Model.TUploadIc" alt="Ic" style="width: 300px; height: 300px;" />
+                            <br />  <a style="margin-top: 20px;"  class="btn btn-pill btn-secondary btn-air-secondary btn-secondary-gradient" href="@Model.TUploadIc" download>Download IC</a> <br />
+                        
+                        <p style="margin-top: 20px;"><b>Phone Number:</b> @Model.TPhone</p>
+                        <p><b>Address:</b> @Model.TAddress</p>
+                        <p><b>Emergency Contact:</b> @Model.TEmerContact</p>
+                        <p><b>Entry Date:</b> @Model.TEntrydate</p>
+                        <p><b>Exit Date:</b> @Model.TExitdate</p>
+                           <p><b>Reminder Date:</b> @Model.LastReminderDate</p>
+                            <p>
+                                <b>Room:</b>
+                                @if (Model.TRoomid != 0)
+                                {
+                                    @Model.TRoomid
+                                }
+                                else
+                                {
+                                    <span style="font-style: italic;">Unassigned</span>
+                                }
+                            </p>
+                        <p><b>Card Code:</b> @Model.TCardCode</p>
+                        <p><b>Add-On Detail:</b> @Model.TAddOnDetail</p>
+                        <p><b>Payment Status:</b> @Model.TPaymentStatus</p>
+                        <div style="margin-top: 20px;">
+                            <img src="@Model.TAgreement" alt="Agreement" style="width: 300px; height: 300px;" />
+                        </div>
+                        
+                            <a style="margin-top: 20px;" class="btn btn-pill btn-secondary btn-air-secondary btn-secondary-gradient" href="@Model.TAgreement" download>Download Agreement</a>
+                        
+                        </div>
+                        
+                    </div>
+
+                   
+
+                </div>
+            </div>
+        </div>
+    </div>

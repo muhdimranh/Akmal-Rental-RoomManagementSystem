@@ -1,0 +1,94 @@
+﻿@model Viho.web.DataDB.TbInvestor
+
+@{
+    ViewData["Title"] = "Investor Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<div class="page-body">
+    <div class="container-fluid">
+        <div class="page-header">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h3>Investor</h3>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a asp-controller="Dashboard" asp-action="Index">Home</a></li>
+                        <li class="breadcrumb-item">Investor</li>
+                        <li class="breadcrumb-item active">Edit Investor</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Container-fluid starts-->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-header pb-0">
+                        <h5>Edit Investor Detail:</h5><span>Fill In The New Information to Edit</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <form asp-action="Edit" asp-route-id="@Model.IId" method="post">
+                                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                    <input type="hidden" asp-for="IId" />
+                                    <div class="form-group">
+                                        <h6>Investment Amount</h6>
+                                        <input asp-for="IInvestment" id="investmentAmount" class="form-control" placeholder="Insert Investment Amount" min="0" max="50000" />
+                                        <span asp-validation-for="IInvestment" class="text-danger"></span>
+                                        <br />
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <h6>Percentage(%)</h6>
+                                        <input asp-for="IPercent" class="form-control" placeholder="Insert Percentage" readonly/>
+                                        <span asp-validation-for="IPercent" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <h6>Lot</h6>
+                                        <select asp-for="ILot" class="form-control" asp-items="ViewBag.ILot"></select>
+                                        <span asp-validation-for="ILot" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="submit" value="Save" class="btn btn-primary col-sm-12" />
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div>
+                            <a asp-action="Index">Back to List</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Container-fluid Ends-->
+</div>
+
+@{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+
+<script>
+    $(document).ready(function () {
+        // Get references to the input fields
+        var investmentAmountField = $('#investmentAmount');
+        var percentField = $('#IPercent');
+
+        // Calculate and update the percentage field whenever the investment amount changes
+        investmentAmountField.on('input', function () {
+            var investmentAmount = parseFloat(investmentAmountField.val());
+            var percentage = (investmentAmount / 50000) * 100;
+
+            // Update the percentage field with the calculated value
+            percentField.val(percentage.toFixed(2)); // Round to 2 decimal places
+        });
+    });
+
+    
+</script>

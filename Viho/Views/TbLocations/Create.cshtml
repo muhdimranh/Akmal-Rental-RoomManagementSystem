@@ -1,0 +1,98 @@
+﻿@model Viho.web.DataDB.TbLocation
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="page-body">
+    <div class="container-fluid">
+        <div class="page-header">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h3>Location(Floor)</h3>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a asp-controller="Dashboard" asp-action="Index">Home</a></li>
+                        <li class="breadcrumb-item">Location</li>
+                        <li class="breadcrumb-item active">Add Location</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Container-fluid starts-->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-header pb-0">
+                        <h5>Fill in Location Details:</h5><span>Fill in Floor Detail Based on Location</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <form asp-action="Create" method="post" enctype="multipart/form-data" asp-controller="TbLocations">
+                                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                    <div class="form-group">
+                                        <h6>Code</h6>
+                                        <input asp-for="LCode" class="form-control" placeholder="Choose Floor Code" />
+                                        <span asp-validation-for="LCode" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <h6>Address</h6>
+                                        <input asp-for="LAddress" class="form-control" placeholder="Insert Floor Address" />
+                                        <span asp-validation-for="LAddress" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <h6>Wifi Info</h6>
+                                        <input asp-for="LWifi" class="form-control" placeholder="Insert Wifi Information (e.g., Unifi 300mbps, Pass: 0123)"/>
+                                        <span asp-validation-for="LWifi" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <h6>Modem IP</h6>
+                                        <input asp-for="LModemIp" class="form-control" placeholder="Insert Modem IP Address"/>
+                                        <span asp-validation-for="LModemIp" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <h6>Account Number</h6>
+                                        <input asp-for="LCctv" class="form-control" placeholder="Insert Account Number for Payment" />
+                                        <span asp-validation-for="LCctv" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <h6>Reminder Date</h6>
+                                        <input asp-for="LReminderDate" class="form-control" min="1" max="31" />
+                                        <span asp-validation-for="LReminderDate" class="text-danger" ></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <h6>Floor Layout</h6>
+                                        <label class="custom-file-label" for="customFile"></label>
+                                        <input type="file" name="LImglayout1" class="form-control-file" />
+                                        <span asp-validation-for="LImglayout1" class="text-danger" ></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="submit" value="Create" class="btn btn-primary" onsubmit="return confirmAdd();" />
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div>
+                            <a asp-action="Index">Back to List</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Container-fluid Ends-->
+</div>
+@section Script{
+    <script>
+        function confirmAdd() {
+            if (confirm("Are you sure you want to add?")) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    </script>
+}
+@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+

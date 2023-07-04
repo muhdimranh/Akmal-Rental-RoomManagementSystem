@@ -1,0 +1,22 @@
+﻿<!-- Container-fluid starts-->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+
+                <div class="card-body">
+                    <div class="row">
+                        <hr />
+                        <p><b>Investor: </b> @Model.IIdNavigation.UUsername</p>
+                        <p><b>Investment Amount: </b> @Model.IInvestment</p>
+                        <p><b>Percentage(%): </b> @Model.IPercent</p>
+                        <p><b>Lot: </b> @Model.ILotNavigation.LotName</p>
+                        <p><a class="btn btn-secondary" asp-action="Edit" asp-route-id="@Model?.IId">Edit</a></p>
+                        <hr />
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

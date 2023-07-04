@@ -1,0 +1,469 @@
+is_global = true
+build_property.TargetFramework = net7.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = Viho.web
+build_property.RootNamespace = Viho.web
+build_property.ProjectDir = C:\Users\imran\Downloads\McByte_AkmalRentalWBL\AkmalRentalWBL\Viho\
+build_property.RazorLangVersion = 7.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = true
+build_property.MSBuildProjectDirectory = C:\Users\imran\Downloads\McByte_AkmalRentalWBL\AkmalRentalWBL\Viho
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/Authentication/CreatPassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aGVudGljYXRpb25cQ3JlYXRQYXNzd29yZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/Authentication/ForgetPassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aGVudGljYXRpb25cRm9yZ2V0UGFzc3dvcmQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/Authentication/LoginSimple.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aGVudGljYXRpb25cTG9naW5TaW1wbGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/Authentication/LoginWithBgImage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aGVudGljYXRpb25cTG9naW5XaXRoQmdJbWFnZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/Authentication/LoginWithImageTwo.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aGVudGljYXRpb25cTG9naW5XaXRoSW1hZ2VUd28uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/Authentication/LoginWithSweetalert.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aGVudGljYXRpb25cTG9naW5XaXRoU3dlZXRhbGVydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/Authentication/LoginWithTooltip.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aGVudGljYXRpb25cTG9naW5XaXRoVG9vbHRpcC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/Authentication/LoginWithValidation.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aGVudGljYXRpb25cTG9naW5XaXRoVmFsaWRhdGlvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/Authentication/Maintenance.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aGVudGljYXRpb25cTWFpbnRlbmFuY2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/Authentication/RegisterSimple.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aGVudGljYXRpb25cUmVnaXN0ZXJTaW1wbGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/Authentication/RegisterWithBgImage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aGVudGljYXRpb25cUmVnaXN0ZXJXaXRoQmdJbWFnZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/Authentication/RegisterWithBgVideo.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aGVudGljYXRpb25cUmVnaXN0ZXJXaXRoQmdWaWRlby5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/Authentication/UnlockUser.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aGVudGljYXRpb25cVW5sb2NrVXNlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/DashBoard/AdminDashboard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaEJvYXJkXEFkbWluRGFzaGJvYXJkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/DashBoard/Ecommerce.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaEJvYXJkXEVjb21tZXJjZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/DashBoard/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaEJvYXJkXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/DashBoard/InvestorDashboard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaEJvYXJkXEludmVzdG9yRGFzaGJvYXJkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/ErrorPage/ErrorPage1.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXJyb3JQYWdlXEVycm9yUGFnZTEuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/ErrorPage/ErrorPage2.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXJyb3JQYWdlXEVycm9yUGFnZTIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/ErrorPage/ErrorPage3.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXJyb3JQYWdlXEVycm9yUGFnZTMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/ErrorPage/ErrorPage4.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXJyb3JQYWdlXEVycm9yUGFnZTQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/Inventory/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3J5XENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/Inventory/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3J5XERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/Inventory/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3J5XERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/Inventory/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3J5XEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/Inventory/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3J5XEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/Page_Layout/BoxLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFnZV9MYXlvdXRcQm94TGF5b3V0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/Page_Layout/Dark.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFnZV9MYXlvdXRcRGFyay5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/Page_Layout/FooterDark.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFnZV9MYXlvdXRcRm9vdGVyRGFyay5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/Page_Layout/FooterFixed.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFnZV9MYXlvdXRcRm9vdGVyRml4ZWQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/Page_Layout/FooterLight.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFnZV9MYXlvdXRcRm9vdGVyTGlnaHQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/Page_Layout/RTL.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFnZV9MYXlvdXRcUlRMLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/SamplePage/SamplePage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2FtcGxlUGFnZVxTYW1wbGVQYWdlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/Shared/IconMarkup.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEljb25NYXJrdXAuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/Shared/_AdLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9BZExheW91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/Shared/_DashboardLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9EYXNoYm9hcmRMYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/Shared/_Footer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Gb290ZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/Shared/_Header.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9IZWFkZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/Shared/_InvLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9JbnZMYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/Shared/_Loader.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Mb2FkZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/Shared/_PaymentRecords.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9QYXltZW50UmVjb3Jkcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/Shared/_Script.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9TY3JpcHQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/Shared/_SidePanelAdmin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9TaWRlUGFuZWxBZG1pbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/Shared/_SidePanelInvestor.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9TaWRlUGFuZWxJbnZlc3Rvci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/Shared/_SidePenal.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9TaWRlUGVuYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/Shared/_SimpleLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9TaW1wbGVMYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/Shared/_Style.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9TdHlsZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/TbAttendancedates/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJBdHRlbmRhbmNlZGF0ZXNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/TbAttendancedates/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJBdHRlbmRhbmNlZGF0ZXNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/TbAttendancedates/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJBdHRlbmRhbmNlZGF0ZXNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/TbAttendancedates/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJBdHRlbmRhbmNlZGF0ZXNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/TbAttendancedates/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJBdHRlbmRhbmNlZGF0ZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/TbAttendancesCleaner/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJBdHRlbmRhbmNlc0NsZWFuZXJcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/TbAttendancesCleaner/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJBdHRlbmRhbmNlc0NsZWFuZXJcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/TbAttendancesCleaner/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJBdHRlbmRhbmNlc0NsZWFuZXJcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/TbAttendancesCleaner/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJBdHRlbmRhbmNlc0NsZWFuZXJcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/TbAttendancesCleaner/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJBdHRlbmRhbmNlc0NsZWFuZXJcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/TbInvestors/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJJbnZlc3RvcnNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/TbInvestors/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJJbnZlc3RvcnNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/TbInvestors/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJJbnZlc3RvcnNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/TbInvestors/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJJbnZlc3RvcnNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/TbInvestors/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJJbnZlc3RvcnNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/TbInvestors/InvDashboard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJJbnZlc3RvcnNcSW52RGFzaGJvYXJkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/TbLocations/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJMb2NhdGlvbnNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/TbLocations/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJMb2NhdGlvbnNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/TbLocations/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJMb2NhdGlvbnNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/TbLocations/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJMb2NhdGlvbnNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/TbLocations/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJMb2NhdGlvbnNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/TbLots/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJMb3RzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/TbLots/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJMb3RzXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/TbLots/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJMb3RzXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/TbLots/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJMb3RzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/TbLots/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJMb3RzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/TbPayments/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJQYXltZW50c1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/TbPayments/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJQYXltZW50c1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/TbRoles/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJSb2xlc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/TbRoles/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJSb2xlc1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/TbRoles/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJSb2xlc1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/TbRoles/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJSb2xlc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/TbRoles/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJSb2xlc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/TbRooms/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJSb29tc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/TbRooms/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJSb29tc1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/TbRooms/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJSb29tc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/TbRooms/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJSb29tc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/TbRooms/_Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJSb29tc1xfRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/TbSales1/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJTYWxlczFcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/TbSales1/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJTYWxlczFcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/TbSales1/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJTYWxlczFcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/TbSales1/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJTYWxlczFcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/TbSales1/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJTYWxlczFcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/TbSales1/salesbycategoryandmonth.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJTYWxlczFcc2FsZXNieWNhdGVnb3J5YW5kbW9udGguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/TbSales1/SalesDashboard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJTYWxlczFcU2FsZXNEYXNoYm9hcmQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/TbTenants/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJUZW5hbnRzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/TbTenants/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJUZW5hbnRzXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/TbTenants/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJUZW5hbnRzXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/TbTenants/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJUZW5hbnRzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/TbTenants/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJUZW5hbnRzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/TbTenants/_Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJUZW5hbnRzXF9EZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/TbUsers/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJVc2Vyc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/TbUsers/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJVc2Vyc1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/TbUsers/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJVc2Vyc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/TbUsers/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJVc2Vyc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/TbUsers/_Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJVc2Vyc1xfRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/User/UserCards.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxVc2VyQ2FyZHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/User/UserEdit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxVc2VyRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/User/UserProfile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxVc2VyUHJvZmlsZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imran/Downloads/McByte_AkmalRentalWBL/AkmalRentalWBL/Viho/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-2jrjnw4aax

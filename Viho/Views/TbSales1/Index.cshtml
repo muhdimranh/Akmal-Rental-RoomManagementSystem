@@ -1,0 +1,210 @@
+﻿@model IEnumerable<Viho.web.DataDB.TbSale>
+
+@{
+    ViewData["Title"] = "Expense";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var userRoleIdClaim = User.Claims.FirstOrDefault(c => c.Type == "URoleid");
+    var userRoleId = userRoleIdClaim != null ? int.Parse(userRoleIdClaim.Value) : 0;
+}
+
+<div class="page-body">
+    <div class="container-fluid">
+        <div class="page-header">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h3>Expenses</h3>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a asp-controller="Dashboard" asp-action="Index">Home</a></li>
+                        <li class="breadcrumb-item active">Expenses</li>
+                    </ol>
+                </div>
+                @if (userRoleId == 3)
+                {
+                    <div class="col-sm-6">
+                        <!-- Create new Start-->
+                        <div class="bookmark">
+                            <ul>
+                                <a asp-action="Create" class="btn btn-pill btn-primary btn-air-primary btn-primary-gradien"><i class="fa fa-plus-square"></i> Add New Record</a>
+                            </ul>
+                        </div>
+                        <!-- Create new Ends-->
+                    </div>
+                }else{}
+            </div>
+        </div>
+    </div>
+    <!-- Container-fluid starts-->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Sales Record</h5><span>View Expenses Records</span>
+                        <br />
+                        <div class="col-sm-4 text-right">
+                            <div class="form-group">
+                                <label for="categoryFilter">Filter by Category:</label>
+                                <select id="categoryFilter" class="form-control">
+                                    <option value="">All Categories</option>
+                                    @foreach (var category in Model.Select(s => s.SCategory).Distinct())
+                                    {
+                                        <option value="@category">@category</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="dt-ext table-responsive">
+                            <table class="display" id="responsive">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Date</th>
+                                        <th scope="col">Category</th>
+                                        <th scope="col">Transaction Type</th>
+                                        <th scope="col">Detail</th>
+                                        <th scope="col">Amount In</th>
+                                        <th scope="col">Amount Out</th>
+                                        <th scope="col">Receipt</th>
+                                        <th scope="col">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="salesTableBody">
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr class="data-row">
+                                            <td>@item.SDate</td>
+                                            <td class="category">@item.SCategory</td>
+                                            <td>@item.STransactionType</td>
+                                            <td>@item.SDetail</td>
+                                            <td>@item.SAmountIn</td>
+                                            <td>@item.SAmountOut</td>
+                                            <td>
+                                                @if (!string.IsNullOrEmpty(item.SReceipt))
+                                                {
+                                                    <a href="@Url.Action("DownloadReceipt", "TbSales1", new { id = item.SId })">Download</a>
+                                                }
+                                                else
+                                                {
+                                                    <span>No Receipt</span>
+                                                }
+                                            </td>
+                                            <td>
+                                                @if(userRoleId == 3){
+                                                <a asp-action="Edit" asp-route-id="@item.SId" class="icofont icofont-edit-alt">Edit</a><br>
+                                                <a class="icofont icofont-file-alt" onclick="loadDetails(@item.SId)">View</a><br>
+                                                    <a asp-action="Delete" asp-route-id="@item.SId" class="icofont icofont-ui-delete">Delete</a>
+                                                }
+                                                else
+                                                {
+                                                <a class="icofont icofont-file-alt" onclick="loadDetails(@item.SId)">View</a><br>
+                                                }                                            
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!---container fluid end-->
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Detail of Record</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="modalContent">
+                    <div class="card">
+                        <div class="animate-widget">
+                            <!-- Content will be loaded dynamically here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Script{
+
+    <script>
+        function loadDetails(id) {
+            $.ajax({
+                url: '@Url.Action("Details", "TbSales1")',
+                type: 'GET',
+                data: { id: id },
+                success: function (result) {
+                    $('#modalContent').html(result);
+                    $('#myModal').modal('show');
+                },
+                error: function () {
+                    alert('Error occurred while loading details.');
+                }
+            });
+        }
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Handle category filter change event
+            $('#categoryFilter').change(function () {
+                var selectedCategory = $(this).val();
+                filterTableByCategory(selectedCategory);
+            });
+
+            // Function to filter the table by category
+            function filterTableByCategory(category) {
+                // Show all rows if category is empty
+                if (!category) {
+                    $('#salesTableBody tr').show();
+                } else {
+                    // Hide rows that don't match the selected category
+                    $('#salesTableBody tr').each(function () {
+                        var rowCategory = $(this).find('.category').text().trim();
+                        if (rowCategory !== category) {
+                            $(this).hide();
+                        } else {
+                            $(this).show();
+                        }
+                    });
+                }
+            }
+        });
+    </script>
+
+    <!-- Plugins JS start-->
+    <script src="../assets/js/modal-animated.js"></script>
+    <script src="../assets/js/datatable/datatables/jquery.dataTables.min.js"></script>
+    <script src="../assets/js/datatable/datatables/datatable.custom.js"></script>
+    <script src="../assets/js/tooltip-init.js"></script>
+    <script src="../assets/js/modal-animated.js"></script>
+    <script src="../assets/js/datatable/datatables/jquery.dataTables.min.js"></script>
+    <script src="../assets/js/datatable/datatable-extension/dataTables.buttons.min.js"></script>
+    <script src="../assets/js/datatable/datatable-extension/jszip.min.js"></script>
+    <script src="../assets/js/datatable/datatable-extension/buttons.colVis.min.js"></script>
+    <script src="../assets/js/datatable/datatable-extension/pdfmake.min.js"></script>
+    <script src="../assets/js/datatable/datatable-extension/vfs_fonts.js"></script>
+    <script src="../assets/js/datatable/datatable-extension/dataTables.autoFill.min.js"></script>
+    <script src="../assets/js/datatable/datatable-extension/dataTables.select.min.js"></script>
+    <script src="../assets/js/datatable/datatable-extension/buttons.bootstrap4.min.js"></script>
+    <script src="../assets/js/datatable/datatable-extension/buttons.html5.min.js"></script>
+    <script src="../assets/js/datatable/datatable-extension/buttons.print.min.js"></script>
+    <script src="../assets/js/datatable/datatable-extension/dataTables.bootstrap4.min.js"></script>
+    <script src="../assets/js/datatable/datatable-extension/dataTables.responsive.min.js"></script>
+    <script src="../assets/js/datatable/datatable-extension/responsive.bootstrap4.min.js"></script>
+    <script src="../assets/js/datatable/datatable-extension/dataTables.keyTable.min.js"></script>
+    <script src="../assets/js/datatable/datatable-extension/dataTables.colReorder.min.js"></script>
+    <script src="../assets/js/datatable/datatable-extension/dataTables.fixedHeader.min.js"></script>
+    <script src="../assets/js/datatable/datatable-extension/dataTables.rowReorder.min.js"></script>
+    <script src="../assets/js/datatable/datatable-extension/dataTables.scroller.min.js"></script>
+    <script src="../assets/js/datatable/datatable-extension/custom.js"></script>
+}
+

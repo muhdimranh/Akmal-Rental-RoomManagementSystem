@@ -1,0 +1,127 @@
+﻿@model Viho.web.DataDB.TbAttendanceCleaner
+@using System.Globalization;
+@{
+    var userRoleIdClaim = User.Claims.FirstOrDefault(c => c.Type == "URoleid");
+    var userRoleId = userRoleIdClaim != null ? int.Parse(userRoleIdClaim.Value) : 0;
+}
+
+<script>
+    function loadEditdate(id) {
+        $.ajax({
+            url: '@Url.Action("Edit", "TbAttendancedates")',
+            type: 'GET',
+            data: { id: id },
+            success: function (result) {
+                $('#modalContent1').html(result);
+                $('#myModal1').modal('show');
+            },
+            error: function () {
+                alert('Error occurred while loading details.');
+            }
+        });
+    }
+
+    function loadDeletedate(id) {
+        $.ajax({
+            url: '@Url.Action("Delete", "TbAttendancedates")',
+            type: 'GET',
+            data: { id: id },
+            success: function (result) {
+                $('#modalContent2').html(result);
+                $('#myModal2').modal('show');
+            },
+            error: function () {
+                alert('Error occurred while loading details.');
+            }
+        });
+    }
+
+
+</script>
+
+<!-- Container-fluid starts-->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+
+                <div class="card-body">
+                    <div class="row">
+                        <hr />
+                        <p><b>Location Code:</b> @Model.AttL.LCode</p>
+                        <p><b>Attendance Count:</b> @Model.AttCount</p>
+                        @using System.Globalization
+                        <p>
+                            <b>Date:</b>
+                            @{
+                                var attendanceDatesByMonthYear = Model.TbAttendancedates
+                                .GroupBy(date => new { Month = date.Attdate?.Month ?? 0, date.Attdate?.Year })
+                                .OrderByDescending(group => group.Key.Year)
+                                .ThenByDescending(group => group.Key.Month)
+                                .ToList();
+                            }
+
+                            @foreach (var group in attendanceDatesByMonthYear)
+                            {
+                                <h6>@CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(group.Key.Month)/@group.Key.Year</h6>
+                                @foreach (var date in group)
+                                {
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <p>@(date.Attdate?.ToString("yyyy-MM-dd"))</p>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <button type="button" class="btn btn-link" onclick="loadEditdate(@date.Id)">Edit</button>
+                                        </div>
+                                      
+                                    </div>
+                                }
+                            }
+
+                         </p>
+                         @if(userRoleId == 3){
+                            <p><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button></p>
+
+                        <hr />
+                         }else{}
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="myModal1" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Attendance Date Update</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="modalContent1">
+                    <div class="card">
+                        <div class="animate-widget">
+                            <!-- Content will be loaded dynamically here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="myModal2" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Attendance Date Delete</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="modalContent2">
+                    <div class="card">
+                        <div class="animate-widget">
+                            <!-- Content will be loaded dynamically here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

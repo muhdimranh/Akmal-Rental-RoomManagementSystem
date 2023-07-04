@@ -1,0 +1,150 @@
+﻿@model List<Viho.web.DataDB.SalesByCategoryAndMonth>
+
+@{
+    ViewData["Title"] = "Sales By Category and Month";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // Event handler for category select change
+        $('#categorySelect').on('change', function () {
+            filterData();
+        });
+
+        // Event handler for year select change
+        $('#yearSelect').on('change', function () {
+            filterData();
+        });
+
+        function filterData() {
+            var selectedCategory = $('#categorySelect').val();
+            var selectedYear = $('#yearSelect').val();
+
+            // Show/hide rows based on the selected filters
+            $('tbody tr').each(function () {
+                var category = $(this).find('.category').text().trim();
+                var year = $(this).find('.year').text().trim();
+
+                var categoryMatch = (selectedCategory === 'All' || selectedCategory === category);
+                var yearMatch = (selectedYear === 'All' || selectedYear === year);
+
+                if (categoryMatch && yearMatch) {
+                    $(this).show();
+                } else {
+                    $(this).hide();
+                }
+            });
+        }
+
+        // Initial filtering on page load
+        filterData();
+    });
+</script>
+
+
+
+
+
+<div class="page-body">
+    <div class="container-fluid">
+        <div class="page-header">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h3>Summary</h3>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a asp-controller="Tb1Sales" asp-action="Index">Home</a></li>
+                        <li class="breadcrumb-item">Sales Dashboard</li>
+                        <li class="breadcrumb-item active">Summary</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Container-fluid starts-->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Profit / Loss</h5><br />
+                        <div class="mb-3">
+                            <label for="categorySelect">Select Category:</label>
+                            <select id="categorySelect" class="form-control" style="width: 100px">
+                                <option value="All">All</option>
+                                @foreach (var category in Model.Select(x => x.Category).Distinct())
+                                {
+                                    <option value="@category">@category</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="yearSelect">Select Year:</label>
+                            <select id="yearSelect" class="form-control" style="width: 100px">
+                                <option value="All">All</option>
+                                @foreach (var year in Model.Select(x => x.Year).Distinct())
+                                {
+                                    <option value="@year">@year</option>
+                                }
+                            </select>
+                        </div>
+
+                    </div>
+                    <table class="table text-center">
+                        <thead class="table-primary">
+                            <tr>
+                                <th>Year</th>
+                                <th>Month</th>
+                                <th>Category</th>
+                                <th>Total Sales</th>
+                                <th>Profit / Loss</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var sales in Model)
+                            {
+                                <tr class="data-row">
+                                    <td class="year">@sales.Year</td>
+                                    <td class="month">@GetMonthName(sales.Month)</td>
+                                    <td class="category">@sales.Category</td>
+                                    <td style="color: @(sales.TotalSales < 0 ? "red" : "black")">@sales.TotalSales</td>
+                                    <td style="color: @(sales.TotalSales < 0 ? "red" : "black")">@(sales.TotalSales < 0 ? "Loss" : "Profit")</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@functions {
+    public string GetMonthName(int monthNumber)
+    {
+        string[] monthNames = new string[]
+        {
+            "", // Index 0 is not used
+            "Jan",
+            "Feb",
+            "Mar",
+            "Apr",
+            "May",
+            "Jun",
+            "Jul",
+            "Aug",
+            "Sept",
+            "Oct",
+            "Nov",
+            "Dec"
+        };
+
+        if (monthNumber >= 1 && monthNumber <= 12)
+        {
+            return monthNames[monthNumber];
+        }
+
+        return string.Empty;
+    }
+}

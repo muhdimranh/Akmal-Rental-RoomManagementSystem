@@ -1,0 +1,183 @@
+﻿@model Viho.web.DataDB.TbAttendanceCleaner
+
+@{
+    var userRoleIdClaim = User.Claims.FirstOrDefault(c => c.Type == "URoleid");
+    var userRoleId = userRoleIdClaim != null ? int.Parse(userRoleIdClaim.Value) : 0;
+}
+
+
+
+<!-- Container-fluid starts-->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+
+                <div class="card-body">
+                    <div class="row">
+                        <hr />
+
+                        <form asp-action="Edit" asp-route-id="@Model.AttId" method="post">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <input type="hidden" asp-for="AttId" />
+                            <div class="form-group">
+                                <label class="control-label col-md-10" for="AttLid">Location Code</label>
+                                <div class="col-md-10">
+                                    @Html.DropDownListFor(model => model.AttLid, new SelectList(ViewBag.AttLid, "Value", "Text"), "Select Location", new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.AttLid, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-10" for="AttCount">Attendance Count</label>
+                                <div class="col-md-10">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" id="attCountField" disabled />
+                                        <span class="input-group-btn">
+                                            <button type="button" class="btn btn-primary" id="incrementButton">+</button>
+                                        </span>
+                                    </div>
+                                    @Html.HiddenFor(model => model.AttCount, new { id = "attCountHidden" })
+                                    @Html.ValidationMessageFor(model => model.AttCount, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            @foreach (var date in Model.TbAttendancedates)
+                            {
+                                <div class="form-group">
+                                    <label class="control-label col-md-10">Attendance Dates</label>
+                                    <div class="col-md-10">
+                                        <button type="button" class="btn btn-primary" id="addDateButton" onclick="addAttendanceDate()">Add Date</button>
+                                        <div id="attendanceDatesContainer"></div>
+                                    </div>
+                                </div>
+                            }
+
+                            <div class="form-group">
+                                <label class="control-label col-md-10">Attendance Dates</label>
+                                <div class="col-md-10">
+                                    <button type="button" class="btn btn-primary" id="addDateButton" onclick="addAttendanceDate()">Add Date</button>
+                                    <div id="attendanceDatesContainer"></div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="submit" value="Save" class="btn btn-primary col-sm-12" id="saveAttendanceDates()" />
+                            </div>
+
+                        </form>
+
+                        <div>
+                            <a asp-action="Index">Back to List</a>
+                        </div>
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script>
+
+    var incrementButton = document.getElementById('incrementButton');
+    var attCountHidden = document.getElementById('attCountHidden');
+    var attCountDisplay = document.getElementById('attCountField');
+
+    incrementButton.addEventListener('click', function () {
+        if (incrementButton.disabled) {
+            return; // Prevent multiple clicks
+        }
+
+        var currentCount = parseInt(attCountHidden.value) || 0;
+
+        // Show confirmation pop-up
+        var confirmation = confirm("Are you sure you want to add attendance by 1?");
+
+        // Check if user confirmed
+        if (confirmation) {
+            incrementButton.disabled = true; // Disable the button
+            attCountHidden.value = currentCount + 1;
+            attCountDisplay.value = currentCount + 1;
+
+            // Enable the button after a delay (e.g., 1 second)
+            setTimeout(function () {
+                incrementButton.disabled = false;
+            }, 1000);
+        }
+    });
+
+    document.addEventListener('DOMContentLoaded', function () {
+        var attCountField = document.getElementById('attCountField');
+        if (attCountField.value === "") {
+            attCountField.value = "0";
+        }
+    });
+
+
+    var dateCounter = 0;
+
+    var addDateButton = document.getElementById('addDateButton');
+
+    function addAttendanceDate() {
+        if (addDateButton.disabled) {
+            return; // Prevent multiple clicks
+        }
+
+        addDateButton.disabled = true; // Disable the button
+
+        var container = document.getElementById("attendanceDatesContainer");
+
+        var dateInput = document.createElement("input");
+        dateInput.name = "TbAttendancedates[" + dateCounter + "].Attdate";
+        dateInput.type = "date";
+        dateInput.classList.add("form-control");
+        dateInput.style.width = "200px";
+
+        container.appendChild(dateInput);
+
+        dateCounter++;
+
+        // Enable the button after a delay (e.g., 1 second)
+        setTimeout(function () {
+            addDateButton.disabled = false;
+        }, 1000);
+    }
+
+    function saveAttendanceDates() {
+        // Get the AttId value from the hidden input field
+        var attId = document.getElementById("AttId").value;
+
+        // Create an array to store the selected dates
+        var dates = [];
+
+        // Iterate through the date inputs and collect the values
+        for (var i = 0; i < dateCounter; i++) {
+            var dateInput = document.getElementsByName("TbAttendancedates[" + i + "].Attdate")[0];
+            dates.push(dateInput.value);
+        }
+
+        // Create a hidden input field to store the AttId value
+        var attIdInput = document.createElement("input");
+        attIdInput.type = "hidden";
+        attIdInput.name = "AttId";
+        attIdInput.value = attId;
+
+        // Create a hidden input field to store the dates array as JSON string
+        var datesInput = document.createElement("input");
+        datesInput.type = "hidden";
+        datesInput.name = "Dates";
+        datesInput.value = JSON.stringify(dates);
+
+        // Append the hidden inputs to the form
+        var form = document.getElementById("attendanceForm");
+        form.appendChild(attIdInput);
+        form.appendChild(datesInput);
+
+        // Submit the form
+        form.submit();
+    }
+</script>

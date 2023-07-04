@@ -1,0 +1,23 @@
+﻿@model List<Viho.web.DataDB.TbPayment>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Room No</th> <!-- Add this line -->
+            <th>Date</th>
+            <th>Amount</th>
+            <th>Type</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var payment in Model)
+        {
+            <tr>
+                <td>@payment.PRoomNo</td> <!-- Add this line -->
+                <td>@payment.PDate.ToShortDateString()</td>
+                <td>@payment.PAmount</td>
+                <td>@payment.PType</td>
+            </tr>
+        }
+    </tbody>
+</table>

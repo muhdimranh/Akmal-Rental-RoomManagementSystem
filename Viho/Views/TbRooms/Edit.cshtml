@@ -1,0 +1,104 @@
+﻿@model Viho.web.DataDB.TbRoom
+@{
+    ViewData["Title"] = "Edit Room";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-body">
+    <div class="container-fluid">
+        <div class="page-header">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h3>Room</h3>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a asp-controller="Dashboard" asp-action="Index">Home</a></li>
+                        <li class="breadcrumb-item">Room</li>
+                        <li class="breadcrumb-item active">Edit Room</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Container-fluid starts-->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-header pb-0">
+                        <h5>Edit Room</h5><span>Fill In The New Information to Edit</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <form asp-action="Edit" asp-route-id="@Model.RId" method="post" enctype="multipart/form-data">
+                                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                    <input type="hidden" asp-for="RId" />
+                                    <div class="form-group">
+                                        <h6>Room No.</h6>
+                                        <input asp-for="RNo" class="form-control" />
+                                        <span asp-validation-for="RNo" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <h6>Location</h6>
+                                        <select asp-for="RLocationid" class="form-control" asp-items="ViewBag.RLocationid"></select>
+                                        <span asp-validation-for="RLocationid" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <h6>Type</h6>
+                                        <input asp-for="RType" class="form-control" />
+                                        <span asp-validation-for="RType" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <h6>Rent Per Month</h6>
+                                        <input asp-for="RPrice" class="form-control" />
+                                        <span asp-validation-for="RPrice" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <h6>Deposit</h6>
+                                        <input asp-for="RDepositAmount" class="form-control" />
+                                        <span asp-validation-for="RDepositAmount" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <h6>Description</h6>
+                                        <input asp-for="RDesc" class="form-control" />
+                                        <span asp-validation-for="RDesc" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <h6>Status</h6>
+                                        <select asp-for="RStatus" class="form-control">
+                                            <option value="Available">Available</option>
+                                            <option value="Not Available">Not Available</option>
+                                            
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <h6>Current Room Image</h6>
+                                         @if (!string.IsNullOrEmpty(Model.RImg1))
+                                         {
+                                             <img src="@Url.Content("~/Picture/Rooms/" + Model.RImg1)" alt="Current Room Image" style="max-width: 350px; max-height: 350px;" />
+                                             <br />
+                                         }
+                                        <hr />
+                                        <label class="custom-file-label" for="customFile">New Image</label>
+                                        <br />
+                                        <input type="file" name="RImg1" class="custom-file-input" />
+                                        <span asp-validation-for="RImg1" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="submit" value="Save" class="btn btn-primary col-sm-12" />
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <a asp-action="Index">Back to List</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Container-fluid Ends-->
+</div>
+
+@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

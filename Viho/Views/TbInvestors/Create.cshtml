@@ -1,0 +1,100 @@
+﻿@model Viho.web.DataDB.TbInvestor
+
+@{
+    ViewData["Title"] = "Add Investor";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="page-body">
+    <div class="container-fluid">
+        <div class="page-header">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h3>Investor</h3>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a asp-controller="Dashboard" asp-action="Index">Home</a></li>
+                        <li class="breadcrumb-item">Investor</li>
+                        <li class="breadcrumb-item active">Add Investor</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Container-fluid starts-->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-header pb-0">
+                        <h5>Add New Investor</h5><span>Fill in the investor detail.</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <form asp-action="Create" enctype="multipart/form-data" method="post" asp-controller="TbInvestors">
+                                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                    <div class="form-group">
+                                        <h6>Investor</h6>
+                                        <select asp-for="IId" class="form-control" asp-items="ViewBag.IId">
+                                            <option value="">-- Select  --</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <h6>Investment Amount</h6>
+                                        <input asp-for="IInvestment" class="form-control" placeholder="Insert Investment Amount" />
+                                        <span asp-validation-for="IInvestment" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <h6>Lot</h6>
+                                        <select asp-for="ILot" class="form-control" asp-items="ViewBag.ILot">
+                                            <option value="">-- Select Lot --</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="type">Payment Type:</label>
+                                        <select class="form-control" id="type" name="type" required>
+                                            <option value="">-- Select Payment Type --</option>
+                                            <option value="Cash">Cash</option>
+                                            <option value="Credit Card">Credit Card</option>
+                                            <option value="Bank Transfer">Bank Transfer</option>
+                                            <!-- Add more payment types as needed -->
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="Receipt" class="control-label">Receipt</label>
+                                        <input type="file" class="form-control" id="receipt" name="receipt" />
+                                    </div>
+
+                                    <div class="form-group">
+                                        <input type="submit" value="Create" class="btn btn-primary" onsubmit="return confirmAdd();" />
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div>
+                            <a asp-action="Index">Back to List</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Container-fluid Ends-->
+</div>
+@section Script{
+    <script>
+        function confirmAdd() {
+            if (confirm("Are you sure you want to add?")) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    </script>
+}
+
+@{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+

@@ -1,0 +1,29 @@
+﻿@model Viho.web.DataDB.TbAttendancedate
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group" style="display: none;">
+                <label asp-for="Attid" class="control-label">Attendance ID</label>
+                <input asp-for="Attid" type="hidden" />
+                <span asp-validation-for="Attid" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Attdate" class="control-label">Attendance Date</label>
+                <input asp-for="Attdate" class="form-control" type="date"/>
+                <span asp-validation-for="Attdate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+

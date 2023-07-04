@@ -1,0 +1,150 @@
+﻿@model IEnumerable<Viho.web.DataDB.TbPayment>
+
+@{
+    ViewData["Title"] = "Payment History";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var userRoleIdClaim = User.Claims.FirstOrDefault(c => c.Type == "URoleid");
+    var userRoleId = userRoleIdClaim != null ? int.Parse(userRoleIdClaim.Value) : 0;
+}
+
+<div class="page-body">
+    <div class="container-fluid">
+        <div class="page-header">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h3>Records</h3>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a asp-controller="Tb1Sales" asp-action="Index">Home</a></li>
+                        <li class="breadcrumb-item">Records</li>
+                        <li class="breadcrumb-item active">Payment Tenant</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Container-fluid starts-->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <h4>Tenant Payment</h4>
+                            </div>
+                        </div><br />
+                        <div class="col-sm-4 text-right">
+                            <div class="form-group">
+                                <label for="locationFilter">Filter by Location:</label>
+                                <select id="locationFilter" class="form-control">
+                                    <option value="">All Locations</option>
+                                    @foreach (var location in Model.Where(s => s.PTenant != null && s.PTenant.TRoom != null && s.PTenant.TRoom.RLocation != null)
+                                                                    .Select(s => s.PTenant.TRoom.RLocation.LCode)
+                                                                    .Distinct())
+                                    {
+                                        <option value="@location">@location</option>
+                                    }
+
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-block row">
+                        <div class="col-sm-12 col-lg-12 col-xl-12">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Date </th>
+                                            <th>Location</th>
+                                            <th>RoomNo</th>
+                                            <th>Tenant</th>
+                                            <th>Transaction Type</th>
+                                            <th>Amount </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="salesTableBody">
+                                    @foreach (var item in Model) {
+                                            <tr class="data-row">
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.PDate)
+                                                </td>
+                                                <td class="location">
+                                                    @Html.DisplayFor(modelItem => item.PLocationCode)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.PRoomNo)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.PTenant.TName)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.PType)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.PAmount)
+                                                </td>
+                                                @if (userRoleId == 3)
+                                                {
+                                                    <td>
+                                                        <a asp-action="Delete" asp-route-id="@item.PId" class="icofont icofont-ui-delete"> Delete</a>
+                                                    </td>
+                                                }else{
+
+                                                }
+                                            </tr>
+                                     }
+                                    </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Handle location filter change event
+            $('#locationFilter').change(function () {
+                var selectedLocation = $(this).val();
+                filterTableByLocation(selectedLocation);
+            });
+
+            // Function to filter the table by location
+            function filterTableByLocation(location) {
+                // Show all rows if location is empty
+                if (!location) {
+                    $('#salesTableBody tr').show();
+                } else {
+                    // Hide rows that don't match the selected location
+                    $('#salesTableBody tr').each(function () {
+                        var rowLocation = $(this).find('.location').text().trim();
+                        if (rowLocation !== location) {
+                            $(this).hide();
+                        } else {
+                            $(this).show();
+                        }
+                    });
+                }
+            }
+
+            // Populate the location filter options
+            var locationFilterOptions = $('#locationFilter');
+            $('#salesTableBody tr').each(function () {
+                var location = $(this).find('.location').text().trim();
+                if (locationFilterOptions.find('option[value="' + location + '"]').length === 0) {
+                    locationFilterOptions.append($('<option></option>').attr('value', location).text(location));
+                }
+            });
+        });
+    </script>
+
+
+
+
+

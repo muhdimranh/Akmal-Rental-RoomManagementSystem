@@ -1,0 +1,37 @@
+﻿<!-- Container-fluid starts-->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+
+                <div class="card-body">
+                    <div class="row">
+                        <hr />
+                        <p><b>Date:</b> @Model.SDate</p>
+                        <p><b>Category:</b> @Model.SCategory</p>
+                        <p><b>Transaction Type:</b> @Model.STransactionType</p>
+                        <p><b>Detail:</b> @Model.SDetail</p>
+                        <p><b>Amount In: RM</b> @Model.SAmountIn</p>
+                        <p><b>Amount Out: RM</b> @Model.SAmountOut</p>
+                        <p><b>Receipt:</b> 
+                            @if (!string.IsNullOrEmpty(Model.SReceipt))
+                            {
+                                <a href="@Url.Action("DownloadReceipt", "TbSales1", new { id =Model.SId })">Download</a>
+                                <hr />
+                                <img src="@Url.Content("~/Picture/Receipt/" + Model.SReceipt)" alt="Receipt" style="max-width: 300px; max-height: 300px;" />
+
+                            }
+                            else
+                            {
+                                <span>No Receipt</span>
+                            }
+                        </p>
+                        <p><a class="btn btn-secondary" asp-action="Edit" asp-route-id="@Model?.SId">Edit</a></p>
+                        <hr />
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

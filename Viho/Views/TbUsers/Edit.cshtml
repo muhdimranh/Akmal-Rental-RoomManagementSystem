@@ -1,0 +1,147 @@
+﻿@model Viho.web.DataDB.TbUser
+
+
+@{
+    ViewData["Title"] = "User & Roles Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    
+
+}
+
+@section Script{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script>
+
+        $(document).ready(function () {
+            var passwordInput = $("#UPass");
+            var revealButton = $("#revealPasswordBtn");
+
+            passwordInput.attr("type", "password");
+
+            revealButton.click(function () {
+                var inputType = passwordInput.attr("type");
+                if (inputType === "password") {
+                    passwordInput.attr("type", "text");
+                } else {
+                    passwordInput.attr("type", "password");
+                }
+            });
+        });
+        </script>
+    
+
+}
+
+
+
+<div class="page-body">
+    <div class="container-fluid">
+        <div class="page-header">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h3>User & Roles</h3>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a asp-controller="Dashboard" asp-action="Index">Home</a></li>
+
+                        <li class="breadcrumb-item">User & Roles</li>
+                        <li class="breadcrumb-item active">Edit User</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Container-fluid starts-->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-header pb-0">
+                        <h5>Edit User</h5><span>Edit users and select their roles.</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <form asp-action="Edit">
+                                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                    <input type="hidden" asp-for="UId" />
+                                    <div class="form-group">
+                                        <label>Full Name</label>
+                                        <input asp-for="UUsername" class="form-control" placeholder="Full Name" />
+                                        <span asp-validation-for="UUsername" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Password</label>
+                                        <div class="input-group">
+                                            <input asp-for="UPass" class="form-control"  />
+                                            <button id="revealPasswordBtn" type="button" class="btn btn-primary">
+                                                <i class="fa fa-eye"></i>
+                                            </button>
+                                        </div>
+                                        <span asp-validation-for="UPass" class="text-danger"></span>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <label>Phone Number</label>
+                                        <input asp-for="UPhone" class="form-control" placeholder="Phone Number" />
+                                        <span asp-validation-for="UPhone" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Email Address</label>
+                                        <input asp-for="UEmail" class="form-control" placeholder="Email Address" />
+                                        <span asp-validation-for="UEmail" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>User Role</label>
+                                        <select asp-for="URoleid" class="form-control" asp-items="ViewBag.URoleid">
+                                            <option value="">-- Select Role --</option>
+                                        </select>
+                                        <span asp-validation-for="URoleid" class="text-danger"></span>
+                                    </div>
+                                    @*<div class="form-group">
+                                    <label>User Role</label>
+                                    <div class="card-body megaoptions-border-space-sm">
+                                    @foreach (var role in ViewBag.URoleid)
+                                    {
+                                    <div class="row">
+                                    <div class="col-sm-6">
+                                    <div class="card">
+                                    <div class="media p-20">
+                                    <div class="radio radio-primary me-3">
+                                    <input id="radio_@role.Value" type="radio" name="URoleid" value="@role.Value">
+                                    <label for="radio_@role.Value"></label>
+                                    </div>
+                                    <div class="media-body">
+                                    <h6 class="mt-0 mega-title-badge">@role.Text<span class="badge badge-primary pull-right digits">Roles</span></h6>
+
+                                    </div>
+                                    </div>
+                                    </div>
+                                    </div>
+                                    </div>
+                                    }
+                                    </div>
+                                    <span asp-validation-for="URoleid" class="text-danger"></span>
+                                    </div>*@
+                                    <div class="form-group">
+                                        <input type="submit" value="Edit" class="btn btn-primary" />
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div>
+                            <a asp-action="Index">Back to List</a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Container-fluid Ends-->
+</div>
+               

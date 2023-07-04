@@ -1,0 +1,96 @@
+﻿@model Viho.web.DataDB.TbLocation
+
+@{
+    ViewData["Title"] = "Edit Location";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="page-body">
+    <div class="container-fluid">
+        <div class="page-header">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h3>Location(Floor) Edit Page</h3>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a asp-controller="Dashboard" asp-action="Index">Home</a></li>
+                        <li class="breadcrumb-item">Location</li>
+                        <li class="breadcrumb-item active">Edit Location</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Container-fluid starts-->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-header pb-0">
+                        <h5>Floor Details:</h5><span>Fill in New Information to Edit.</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <form asp-action="Edit" asp-route-id="@Model.LId" method="post" enctype="multipart/form-data">
+                                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                    <input type="hidden" asp-for="LId" />
+                                    <div class="form-group">
+                                        <h6>Code</h6>
+                                        <input asp-for="LCode" class="form-control" />
+                                        <span asp-validation-for="LCode" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <h6>Address</h6>
+                                        <input asp-for="LAddress" class="form-control" />
+                                        <span asp-validation-for="LAddress" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <h6>Wifi Info</h6>
+                                        <input asp-for="LWifi" class="form-control" />
+                                        <span asp-validation-for="LWifi" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <h6>Modem IP</h6>
+                                        <input asp-for="LModemIp" class="form-control" />
+                                        <span asp-validation-for="LModemIp" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <h6>Reminder Date</h6>
+                                        <input asp-for="LReminderDate" class="form-control" min="1" max="31" />
+                                        <span asp-validation-for="LReminderDate" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <h6>Account Number</h6>
+                                        <input asp-for="LCctv" class="form-control" />
+                                        <span asp-validation-for="LCctv" class="text-danger"></span>
+                                      
+                                    </div>
+                                    <div class="form-group">
+                                        <h6>Current Layout</h6>
+                                        @if (!string.IsNullOrEmpty(Model.LImglayout1))
+                                        {
+                                            <img src="@Url.Content("~/Picture/Layouts/" + Model.LImglayout1)" alt="Current Layout Image" style="max-width: 350px; max-height: 350px;" />
+                                            <br />
+                                        }
+                                        <hr/>
+                                        <input type="file" name="LImglayout1" class="custom-file-input" />
+                                        <span asp-validation-for="LImglayout1" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="submit" value="Save" class="btn btn-primary col-sm-12" />
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <a asp-action="Index">Back to List</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Container-fluid Ends-->
+</div>
+
+@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+

@@ -1,0 +1,104 @@
+﻿@model LoginViewModel
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_SimpleLayout.cshtml";
+}
+<section>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-5"><img class="bg-img-cover bg-center" src="~/Picture/Logo/0002.jpg" alt="looginpage"></div>
+            <div class="col-xl-7 p-0">
+                <div class="login-card">
+                    <form asp-asp-controller="Authentication" asp-action="Login" class="theme-form login-form">
+
+                        <h4>Login</h4>
+                        <h6>Welcome back! Log in to your account.</h6>
+
+                        @if (TempData["LogInStatus"] != null && TempData["LogInStatus"].ToString() == "0")
+                        {
+                            <div class="alert alert-danger dark" role="alert">
+                                <p>Incorrect email or password. Please try again.</p>
+                            </div>
+                        }
+                        <div class="form-group">
+                            <label>Email</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="icon-email"></i></span>
+                                <input type="email" class="form-control" asp-for="UEmail" name="login[UEmail]" required="" placeholder="Enter your email address">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="icon-lock"></i></span>
+                                <input asp-for="UPass" id="password" class="form-control" type="password" name="login[UPass]" required="" placeholder="Enter your email address">                                <div class="show-hide"><span class="show"></span></div>
+                            </div>
+                        </div>
+                        
+                        @*<div class="form-group"><a class="btn btn-primary btn-block" asp-controller="Dashboard" asp-action="Index" type="submit">Sign in</a></div>*@
+                        <div class="form-group"><button type="submit" class="btn btn-primary btn-block" >Sign in</button></div>
+                        
+                        
+                        
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    //function btnSubmit()
+    //{
+    //    var userID = "test@gmail.com";
+    //    var pass = "123456";
+    //    var IsUser = false;
+    //    var IsPass = false;
+
+    //    var username = $('#username').val();
+    //    if (username == null || username == "")
+    //    {
+    //        IsUser = false;
+    //        $('#alartUsername').text('Invalid Username');
+    //    }
+    //    else
+    //    {
+    //        IsUser = true;
+    //        $('#alartUsername').text('');
+            
+    //    }
+    //    var password = $('#password').val();
+    //    if (password == null || password == "")
+    //    {
+    //        IsPass = false;
+    //        $('#alartPassword').text('Invalid Password'); 
+    //    }
+    //    else
+    //    {
+    //        IsPass = true;
+    //        $('#alartPassword').text('');
+    //    }
+    //    if (IsUser && IsPass)
+    //    {
+    //        if (username == userID && password == pass)
+    //        {
+    //            var url = '/Authentication/Login';
+    //            $.ajax({
+    //                url: url,
+    //                type: 'POST',
+    //                contentType: false,
+    //                processData: false,
+    //                data: username, password,
+    //                dataType: 'json',
+    //                success: function (Data)
+    //                {
+
+    //                },
+    //                error: function (XMLHttpRequest, textStatus, errorThrown)
+    //                {
+    //                    alart("Invalid Credentials.")
+    //                }
+    //            });
+    //        }
+    //    }
+    //}
+</script>

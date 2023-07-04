@@ -1,0 +1,80 @@
+﻿@using Viho.web.DataDB;
+
+@{
+    var rentReminders = ViewBag.RentReminders as List<TbTenant>;
+    var tenantCount = rentReminders != null ? rentReminders.Count : 0;
+
+    var userRoleIdClaim = User.Claims.FirstOrDefault(c => c.Type == "URoleid");
+    var userRoleId = userRoleIdClaim != null ? int.Parse(userRoleIdClaim.Value) : 0;
+
+}
+}
+
+<!-- Page Header Start-->
+<div class="page-main-header">
+    <div class="main-header-right row m-0">
+        <div class="main-header-left">
+            <div class="logo-wrapper"><a asp-controller="Dashboard" asp-action="Index"><img class="img-fluid" src="~/assets/images/logo/logo.png" alt=""></a></div>
+            <div class="dark-logo-wrapper"><a asp-controller="Dashboard" asp-action="Index"><img class="img-fluid" src="~/assets/images/logo/dark-logo.png" alt=""></a></div>
+            <div class="toggle-sidebar"><i class="status_toggle middle" data-feather="align-center" id="sidebar-toggle"></i></div>
+        </div>
+        <div class="left-menu-header col">
+            <ul>
+                <li>
+                    <form class="form-inline search-form">
+                        <div class="search-bg">
+                            <i class="fa fa-search"></i>
+                            <input class="form-control-plaintext" placeholder="Search here.....">
+                        </div>
+                    </form><span class="d-sm-none mobile-search search-bg"><i class="fa fa-search"></i></span>
+                </li>
+            </ul>
+        </div>
+        <div class="nav-right col pull-right right-menu p-0">
+            <ul class="nav-menus">
+                <li><a class="text-dark" href="#!" onclick="javascript:toggleFullScreen()"><i data-feather="maximize"></i></a></li>
+                
+                @if (userRoleId == 3 && tenantCount > 0)
+                {
+                    <li class="onhover-dropdown">
+                        <div class="notification-box"><i data-feather="bell"></i><span class="dot-animated"></span></div>
+                        <ul class="notification-dropdown onhover-show-div">
+                            <li>
+                                <p class="f-w-700 mb-0">Rent Reminder<span class="pull-right badge badge-primary badge-pill">@tenantCount</span></p>
+                            </li>
+                            @foreach (var tenant in rentReminders)
+                            {
+                                <li>
+                                    <div class="media">
+                                        <div class="media-body">
+                                            <p><strong>@tenant.TName</strong> - Room @(tenant.TRoom != null ? tenant.TRoom.RNo.ToString() : "N/A")</p>
+                                            <span>@tenant.LastReminderDate.ToShortDateString()</span>
+                                            @if (tenant.TPaymentStatus == "Unpaid" && !tenant.IsPaymentCollected)
+                                            {
+                                                var roomNo = tenant.TRoom != null ? tenant.TRoom.RNo.ToString() : "N/A";
+                                                var reminderDate = tenant.LastReminderDate.AddDays(7);
+                                                var roomPrice = tenant.TRoom != null ? tenant.TRoom.RPrice.ToString("C") : "N/A";
+                                                var accNo = tenant.TRoom?.RLocation?.LCctv;
+                                                var message = Uri.EscapeDataString($"Hi {tenant.TName},\n\nPlease pay your rent for Room {roomNo} before {reminderDate.ToShortDateString()}.\nTotal is: {roomPrice}.\n\nKindly make your payment to: {accNo}.\n\nThank you.");
+                                                var whatsappLink = $"https://wa.me/{tenant.TPhone}?text={message}";
+                                                <a class="btn btn-pill btn-primary btn-air-primary btn-xs" href="@whatsappLink" style="color: white;"><i class="fa fa-whatsapp" ></i> WhatsApp</a>
+                                            }
+                                        </div>
+                                    </div>
+                                </li>
+                            }
+                        </ul>
+                    </li>
+                }
+
+                
+                
+                <li class="onhover-dropdown p-0">
+                    <button class="btn btn-primary-light" type="button"><a asp-controller="Authentication" asp-action="Logout"><i data-feather="log-out"></i>Log out</a></button>
+                </li>
+            </ul>
+        </div>
+        <div class="d-lg-none mobile-toggle pull-right w-auto"><i data-feather="more-horizontal"></i></div>
+    </div>
+</div>
+<!-- Page Header Ends -->

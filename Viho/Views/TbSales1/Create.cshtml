@@ -1,0 +1,119 @@
+﻿@model Viho.web.DataDB.TbSale
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-body">
+        <div class="container-fluid">
+            <div class="page-header">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h3>Records</h3>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a asp-controller="Tb1Sales" asp-action="Index">Home</a></li>
+                            <li class="breadcrumb-item">Sales Dashboard</li>
+                            <li class="breadcrumb-item active">Records</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!-- Container-fluid starts-->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-header pb-0">
+                        <h5>Add Sales Record</h5>
+                        <span><a asp-action="Index">Back to List</a></span>
+                    </div>
+                    <form asp-action="Create" enctype="multipart/form-data" method="post">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                    <div class="mb-3">
+                                        <label asp-for="SDate" class="control-label">Date</label>
+                                        <input asp-for="SDate" class="form-control" type="date" style="width: 200px;" />
+                                        <span asp-validation-for="SDate" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="mb-3">
+                                            <label asp-for="SCategory" class="control-label">Category</label>
+                                        <select asp-for="SCategory" asp-items="ViewBag.CategoryList" class="form-control" style="width: 200px;">
+                                            <option value="">-- Select Category --</option>
+                                            </select>
+                                            <span asp-validation-for="SCategory" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="mb-3">
+                                        <div class="form-group">
+                                            <label asp-for="STransactionType" class="control-label">Transaction Type</label>
+                                            <select asp-for="STransactionType" asp-items="ViewBag.TransactionTypeList" class="form-control" style="width: 200px;">
+                                            <option value="">-- Select Type --</option>
+                                            </select>
+                                            <span asp-validation-for="STransactionType" class="text-danger"></span>
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="mb-3">
+                                        <div class="form-group">
+                                            <label asp-for="SDetail" class="control-label">Detail</label>
+                                            <input asp-for="SDetail" class="form-control" />
+                                            <span asp-validation-for="SDetail" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="mb-3">
+                                        <label asp-for="SAmountIn" class="control-label">AmountIn</label>
+                                        <input asp-for="SAmountIn" class="form-control" style="width: 200px" placeholder="0.00" />
+                                        <span asp-validation-for="SAmountIn" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="mb-3">
+                                        <label asp-for="SAmountOut" class="control-label">AmountOut</label>
+                                        <input asp-for="SAmountOut" class="form-control" style="width: 200px" placeholder="0.00" />
+                                        <span asp-validation-for="SAmountOut" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div>
+                                        <label asp-for="SReceipt" class="control-label">Receipt</label>
+                                        <input asp-for="SReceipt" class="form-control" type="file" />
+                                        <span asp-validation-for="SReceipt" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer text-end">
+                            <input type="submit" value="Create" class="btn btn-primary" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}

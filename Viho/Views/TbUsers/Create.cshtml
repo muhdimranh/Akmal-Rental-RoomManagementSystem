@@ -1,0 +1,88 @@
+﻿@model Viho.web.DataDB.TbUser
+
+@{
+    ViewData["Title"] = "User & Roles Add";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Script{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+
+<div class="page-body">
+    <div class="container-fluid">
+        <div class="page-header">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h3>User & Roles</h3>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a asp-controller="Dashboard" asp-action="Index">Home</a></li>
+                        
+                        <li class="breadcrumb-item">User & Roles</li>
+                        <li class="breadcrumb-item active">Add User</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Container-fluid starts-->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-header pb-0">
+                        <h5>Add User</h5><span>Add users and select their roles.</span>
+                    </div>
+                    <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form asp-action="Create">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <div class="form-group">
+                                    <label>Full Name</label>
+                                        <input asp-for="UUsername" class="form-control" placeholder="Full Name" />
+                                     <span asp-validation-for="UUsername" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label>Password</label>
+                                        <input asp-for="UPass" type="password" class="form-control" placeholder="Password" />
+                                    <span asp-validation-for="UPass" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label>Phone Number</label>
+                                        <input asp-for="UPhone" class="form-control" placeholder="Phone Number" />
+                                    <span asp-validation-for="UPhone" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label>Email Address</label>
+                                        <input asp-for="UEmail" class="form-control" placeholder="Email Address" />
+                                    <span asp-validation-for="UEmail" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label>User Role</label>
+                                    <select asp-for="URoleid" class="form-control" asp-items="ViewBag.URoleid">
+                                            <option value="">-- Select Role --</option>
+                                    </select>
+                                        <span asp-validation-for="URoleid" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <input type="submit" value="Create" class="btn btn-primary" />
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div>
+                        <a asp-action="Index">Back to List</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <!-- Container-fluid Ends-->
+</div>
